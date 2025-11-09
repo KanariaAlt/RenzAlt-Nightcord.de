@@ -25,13 +25,13 @@ TYPE : Vanila Build
     <li>fixed Camera & libgf_* missing depedency</li>
 </ul>
 
-{{< alertBlockquote type="note" >}}
+:::note
 It seems that AxionOS 2.1 is taking up too much system size so there is not enough space to install GAPPS, so how to install GAPPS?
-{{< /alertBlockquote  >}}
+:::
 
-{{< alertBlockquote type="tip" >}}
-please follow these tips.
-{{< /alertBlockquote  >}}
+:::tip
+please follow these tips..
+:::
 
 **Prerequisites**
 - Unlocked Bootloader
@@ -50,10 +50,10 @@ please follow these tips.
 
 <tr>
   <td>
-    <img src="https://raw.githubusercontent.com/KanadeAlt/AmiaAlt-Stuff/refs/heads/reimu/screenshots/axi1.jpg" width="430" height="720" align="left" />
+    <img src="https://raw.githubusercontent.com/KanadeAlt/AmiaAlt-Stuff/refs/heads/reimu/screenshots/axi1.jpg" width="330" height="620" align="left" />
   </td>
   <td>
-    <img src="https://raw.githubusercontent.com/KanadeAlt/AmiaAlt-Stuff/refs/heads/reimu/screenshots/axi2.jpg" width="430" height="720" align="center" />
+    <img src="https://raw.githubusercontent.com/KanadeAlt/AmiaAlt-Stuff/refs/heads/reimu/screenshots/axi2.jpg" width="330" height="620" align="center" />
   </td>
 </tr>
 
