@@ -49,87 +49,53 @@ please follow these tips..
 <style>
   .screenshots-section {
     margin-top: 40px;
-    margin-bottom: 30px;
     text-align: center;
-  }
-
-  .screenshots-section h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  /* Default (dark mode) */
-  body,
-  .screenshots-section h2 {
-    color: #fff;
-  }
-
-  /* Light mode */
-  @media (prefers-color-scheme: light) {
-    .screenshots-section h2 {
-      color: #111; /* hitam elegan */
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
   }
 
   .screenshots {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: nowrap;
-    max-width: 100%;
-    padding: 0 10px;
+    margin-top: 30px;
   }
 
   .screenshots img {
-    width: 48%;
+    width: 330px;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(25px);
   }
 
-  /* Saat elemen terlihat di layar */
+  /* Efek muncul saat gambar terlihat di layar */
   .visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
   }
 
-  .screenshots img:nth-child(1).visible {
-    transition-delay: 0.2s;
-  }
-
-  .screenshots img:nth-child(2).visible {
-    transition-delay: 0.4s;
-  }
-
   .screenshots img:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   }
 
-  /* Responsif */
+  /* Responsif: tetap dua sejajar di layar kecil */
   @media (max-width: 768px) {
     .screenshots {
-      gap: 10px;
+      gap: 8px;
     }
+
     .screenshots img {
       width: 48%;
-      border-radius: 10px;
+      max-width: none;
+      height: auto;
     }
   }
 
   @media (max-width: 480px) {
-    .screenshots {
-      gap: 8px;
-    }
     .screenshots img {
       width: 48%;
     }
@@ -137,7 +103,6 @@ please follow these tips..
 </style>
 
 <div class="screenshots-section">
-  <h2 class="fade-in-element">Screenshots</h2>
   <div class="screenshots">
     <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
     <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
@@ -145,13 +110,15 @@ please follow these tips..
 </div>
 
 <script>
+  // Animasi hanya muncul saat elemen terlihat di layar
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // biar animasi hanya sekali
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.3 });
 
   document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
 </script>
