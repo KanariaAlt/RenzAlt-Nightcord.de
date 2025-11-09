@@ -50,42 +50,49 @@ please follow these tips..
 
 <style>
   :root {
-    --accent: #f9a8d4; /* Warna pink lembut */
-    --bg-card: #2a2022; /* Warna background tombol */
+    --accent: #f9a8d4; /* warna panah */
+    --bg-card: #2a2022; /* warna latar tombol */
     --text-color: #e5e5e5;
   }
 
+  /* Container keseluruhan */
+  .screenshot-section {
+    max-width: 720px; /* lebar sama seperti gambar */
+    margin: 20px auto;
+  }
+
+  /* Tombol Material You */
   .screenshots-card {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 6px;
     background-color: var(--bg-card);
-    border-radius: 16px;
-    padding: 14px 18px;
-    margin: 40px auto 25px;
+    border-radius: 14px;
+    padding: 12px;
     width: 100%;
-    max-width: 320px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    cursor: default;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.05),
+                0 2px 4px rgba(0,0,0,0.25);
     transition: background 0.3s ease, transform 0.2s ease;
   }
 
   .screenshots-card:hover {
     background-color: rgba(249, 168, 212, 0.08);
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 
   .screenshots-card span {
     font-family: "Roboto Flex", sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-color);
-    letter-spacing: 0.03em;
+    text-align: center;
   }
 
   .screenshots-card .arrow {
     color: var(--accent);
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-left: 2px;
     transition: transform 0.2s ease;
   }
 
@@ -93,19 +100,18 @@ please follow these tips..
     transform: translateX(3px);
   }
 
-  /* Kontainer gambar */
+  /* Container screenshot */
   .screenshots {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 14px;
-    flex-wrap: nowrap;
-    padding: 0 10px;
-    max-width: 100%;
+    margin-top: 10px;
   }
 
   .screenshots img {
-    width: 48%;
-    height: auto;
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
     border-radius: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -116,36 +122,24 @@ please follow these tips..
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
   }
 
-  /* Responsif */
-  @media (max-width: 768px) {
-    .screenshots {
-      gap: 10px;
-    }
+  @media (max-width: 600px) {
     .screenshots img {
-      width: 48%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .screenshots {
-      gap: 8px;
-    }
-    .screenshots img {
-      width: 48%;
+      flex: 1 1 100%;
+      max-width: 100%;
     }
   }
 </style>
 
-<!-- Judul ala Material You -->
-<div class="screenshots-card">
-  <span>Screenshots</span>
-  <span class="arrow">›</span>
-</div>
+<div class="screenshot-section">
+  <div class="screenshots-card">
+    <span>Screenshots</span>
+    <span class="arrow">›</span>
+  </div>
 
-<!-- Gambar -->
-<div class="screenshots">
-  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
-  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
+  <div class="screenshots">
+    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
+    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
+  </div>
 </div>
 
 ## Downloads
