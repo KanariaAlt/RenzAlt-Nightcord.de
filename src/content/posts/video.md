@@ -64,120 +64,156 @@ draft: false
   overflow: hidden;
   border-radius: 14px;
   margin-top: 14px;
-  color: white;
+  color: var(--card-text, #fff);
   font-family: "Inter", sans-serif;
-  min-height: 135px;
+  min-height: 140px;
 }
 
+/* Background blur */
 .a13-bg {
   position: absolute;
   inset: 0;
   background: url("https://i.ytimg.com/vi/5gIf0_xpFPI/hqdefault.jpg") center/cover;
-  filter: blur(20px) brightness(0.65);
+  filter: blur(18px) brightness(0.7);
   transform: scale(1.1);
   z-index: 0;
 }
 
+/* Kontainer isi */
 .a13-content {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 10px 16px;
+  padding: 14px 20px;
   backdrop-filter: blur(8px);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 1;
   border-radius: 14px;
 }
 
-/* Cover dominan tapi lembut */
+/* Cover */
+.a13-cover {
+  flex-shrink: 0;
+}
 .a13-cover img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
   transition: transform 0.25s ease;
 }
-
 .a13-cover img:hover {
   transform: scale(1.05);
 }
 
-/* Info compact */
+/* Info lebih ke tengah */
 .a13-info {
   flex: 1;
-  margin-left: 14px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* Tag */
 .a13-tags {
   font-size: 11.5px;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
+/* Judul */
 .a13-info h3 {
-  margin: 3px 0;
-  font-size: 15px;
+  margin: 4px 0 2px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.3;
+  word-break: break-word;
+  color: var(--a13-title, #fff);
 }
 
+/* Artist */
 .a13-info p {
   margin: 0;
-  font-size: 12.5px;
-  opacity: 0.75;
+  font-size: 13px;
+  opacity: 0.8;
+  color: var(--a13-subtext, #f1f1f1);
 }
 
-/* Controls lebih kecil dan rapi */
+/* Kontrol */
 .a13-controls {
-  margin-top: 6px;
+  margin-top: 8px;
   display: flex;
   align-items: center;
 }
-
 .a13-controls button {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   border: none;
-  color: white;
+  color: inherit;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
   cursor: pointer;
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .a13-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
-
 .a13-controls svg {
   width: 14px;
   height: 14px;
   pointer-events: none;
 }
 
+/* Tema terang otomatis */
+@media (prefers-color-scheme: light) {
+  .a13-music-card {
+    color: #222;
+  }
+  .a13-content {
+    background: rgba(255, 255, 255, 0.7);
+  }
+  .a13-bg {
+    filter: blur(18px) brightness(0.9);
+  }
+  .a13-info h3 {
+    color: #222;
+  }
+  .a13-info p {
+    color: #444;
+  }
+  .a13-controls button {
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
+  }
+  .a13-controls button:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
 /* Responsif */
 @media (max-width: 768px) {
   .a13-content {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
+    align-items: center;
+    text-align: center;
+    padding: 12px;
   }
   .a13-cover img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
   }
   .a13-info {
     margin-left: 0;
     margin-top: 10px;
+  }
+  .a13-controls {
+    justify-content: center;
   }
 }
 </style>
