@@ -46,113 +46,102 @@ please follow these tips..
 - Flash LiteGapps "GMS Core, Playstore, GoogleServicesFramework, Common" addons via SukiSU manager
 - or if you want it easy, just repartition the system and flash as usual (optional)
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@600&display=swap" rel="stylesheet">
-
 <style>
-  :root {
-    --accent: #ff8ba7;       /* Warna aksen pink muda */
-    --text-dark: #1a1517;    /* Warna teks gelap */
-    --bg-base: #1b1214;      /* Warna latar belakang utama */
-    --card-bg: #2a1d20;      /* Warna dasar card */
-    --shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-  }
-
-  body {
-    background-color: var(--bg-base);
-    color: white;
-    font-family: "Roboto Flex", sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
-  .screenshot-section {
-    max-width: 900px;
-    margin: 40px auto;
+  .screenshots-section {
+    margin-top: 40px;
+    margin-bottom: 30px;
     text-align: center;
   }
 
-  /* Tombol judul "Screenshots" */
-  .screenshots-card {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--accent);
-    border-radius: 12px;
-    padding: 10px 20px;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .screenshots-card span {
-    font-size: 1rem;
+  .screenshots-section h2 {
+    color: #fff;
+    font-size: 1.5rem;
     font-weight: 600;
-    color: var(--text-dark);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
-  .screenshots-card .arrow {
-    font-size: 1.2rem;
-    margin-left: 6px;
-    color: var(--text-dark);
-  }
-
-  .screenshots-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
-  }
-
-  /* Layout gambar selalu berdampingan */
   .screenshots {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 14px;
-    margin-top: 18px;
-    overflow-x: auto;
-    padding: 10px;
+    gap: 12px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    padding: 0 10px;
   }
 
   .screenshots img {
-    flex: 0 0 auto;
     width: 48%;
-    max-width: 400px;
-    border-radius: 18px;
-    background: var(--card-bg);
-    padding: 6px;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Saat elemen terlihat di layar */
+  .visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .screenshots img:nth-child(1).visible {
+    transition-delay: 0.2s;
+  }
+
+  .screenshots img:nth-child(2).visible {
+    transition-delay: 0.4s;
   }
 
   .screenshots img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   }
 
-  /* Buat agar tetap sejajar di HP kecil */
-  @media (max-width: 600px) {
+  /* Responsif: tetap dua kolom di semua layar */
+  @media (max-width: 768px) {
     .screenshots {
       gap: 10px;
     }
-
     .screenshots img {
-      width: 45%;
-      padding: 4px;
-      border-radius: 14px;
+      width: 48%;
+      border-radius: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .screenshots {
+      gap: 8px;
+    }
+    .screenshots img {
+      width: 48%;
     }
   }
 </style>
 
-<div class="screenshot-section">
-  <div class="screenshots-card">
-    <span>Screenshots</span>
-    <span class="arrow">›</span>
-  </div>
-
+<div class="screenshots-section">
+  <h2 class="fade-in-element">Screenshots</h2>
   <div class="screenshots">
-    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot kiri">
-    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot kanan">
+    <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
+    <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
   </div>
 </div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+</script>
 
 ## Downloads
 
