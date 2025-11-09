@@ -38,6 +38,8 @@ export default class osuCursor {
 		const link = document.createElement('link');
 		link.rel = 'stylesheet';
 		link.href = '/osu-cursor/style.css';
+		link.onload = () => console.log('osu!cursor CSS loaded ✅');
+		link.onerror = () => console.error('❌ osu!cursor CSS failed to load');
 
 		document.head.appendChild(link);
 
