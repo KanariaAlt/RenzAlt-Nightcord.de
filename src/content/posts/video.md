@@ -77,7 +77,7 @@ draft: false
   z-index: 0;
 }
 
-/* Kontainer isi */
+/* content */
 .a13-content {
   position: relative;
   display: flex;
@@ -108,7 +108,7 @@ draft: false
   transform: scale(1.05);
 }
 
-/* Info */
+/* music info */
 .a13-info {
   flex: 1;
   margin-left: 16px;
@@ -138,7 +138,7 @@ draft: false
   color: var(--a13-subtext, #f1f1f1);
 }
 
-/* Kontrol */
+/* btn control */
 .a13-controls {
   margin-top: 8px;
   display: flex;
@@ -168,7 +168,7 @@ draft: false
   pointer-events: none;
 }
 
-/* Tema terang otomatis */
+/* fix light/dark theme */
 @media (prefers-color-scheme: light) {
   .a13-music-card {
     color: #222;
@@ -194,7 +194,7 @@ draft: false
   }
 }
 
-/* ✅ Mobile tetap horizontal tapi lebih compact */
+/* fix mobile device */
 @media (max-width: 768px) {
   .a13-content {
     flex-direction: row;
