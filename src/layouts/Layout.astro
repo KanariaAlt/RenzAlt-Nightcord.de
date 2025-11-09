@@ -110,7 +110,7 @@ const bannerOffset =
 			/>
 		))}
 
-		<!-- 🎯 osu!lazer cursor stylesheet -->
+		<!-- osu!lazer cursor stylesheet -->
 		<link rel="stylesheet" href="/osu-cursor/style.css" />
 
 		<!-- Theme init (from Fuwari original) -->
@@ -163,42 +163,9 @@ const bannerOffset =
 		<!-- menjaga tinggi halaman selama transisi Swup -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 
-		<!-- 🎯 osu!lazer cursor script -->
-		<script src="/osu-cursor/index.umd.js" defer></script>
-		<script defer>
-		document.addEventListener("DOMContentLoaded", () => {
-		  try {
-		    if (window.OsuCursor) {
-		      // Buat instance baru
-		      const cursor = new OsuCursor({
-		        rotate: true,
-		        trail: true,
-		        color: "#ff66aa", // warna pink agar jelas
-		        scale: 1.0,
-		      });
-
-		      // Matikan cursor default browser
-		      const css = document.createElement("style");
-		      css.textContent = `html, body, * { cursor: none !important; }`;
-		      document.head.appendChild(css);
-
-		      // Re-init setelah transisi halaman Swup
-		      if (window?.swup?.hooks) {
-		        window.swup.hooks.on("page:view", () => {
-		          cursor.stop();
-		          cursor.init();
-		        });
-		      }
-
-		      console.log("osu!cursor initialized ✅");
-		    } else {
-		      console.error("❌ OsuCursor not found! Pastikan /osu-cursor/index.umd.js bisa diakses.");
-		    }
-		  } catch (err) {
-		    console.error("osu!cursor init error:", err);
-		  }
-		});
-		</script>
+		<!-- osu-lazer cursor -->
+		<script src="/osu-cursor/index.umd.js" type="module"></script>
+		<script type="module">var cursor = new osuCursor();</script>
 	</body>
 </html>
 
