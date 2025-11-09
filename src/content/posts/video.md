@@ -66,7 +66,7 @@ draft: false
   margin-top: 24px;
   color: white;
   font-family: "Inter", sans-serif;
-  min-height: 150px;
+  min-height: 160px;
 }
 
 .a13-bg {
@@ -82,7 +82,7 @@ draft: false
   position: relative;
   display: flex;
   align-items: center;
-  padding: 16px 24px;
+  padding: 18px 24px;
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.45);
   z-index: 1;
@@ -90,16 +90,16 @@ draft: false
 }
 
 .a13-cover img {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   border-radius: 14px;
   object-fit: cover;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
 }
 
 .a13-info {
   flex: 1;
-  margin-left: 20px;
+  margin-left: 22px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,18 +107,18 @@ draft: false
 
 .a13-tags {
   font-size: 13px;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .a13-info h3 {
-  margin: 3px 0;
-  font-size: 17px;
+  margin: 4px 0;
+  font-size: 18px;
 }
 
 .a13-info p {
   margin: 0;
-  font-size: 13px;
-  opacity: 0.8;
+  font-size: 14px;
+  opacity: 0.85;
 }
 
 /* Controls */
@@ -133,8 +133,8 @@ draft: false
   border: none;
   color: white;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   margin-right: 6px;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -145,12 +145,12 @@ draft: false
 
 .a13-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .a13-controls svg {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   pointer-events: none;
 }
 
