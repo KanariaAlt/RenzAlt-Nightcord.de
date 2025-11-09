@@ -109,7 +109,7 @@ const bannerOffset =
 			/>
 		))}
 
-		<link rel="stylesheet" href="/osu-cursor/main.css" />
+		<link rel="stylesheet" href="/osu-cursor/style.css" />
 
 		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
@@ -160,7 +160,7 @@ const bannerOffset =
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 
 		<!-- 🔵 osu-cursor script -->
-		<script src="/osu-cursor/main.js" defer></script>
+		<script src="/osu-cursor/index.umd.js" defer></script>
 		<script>
 		document.addEventListener("DOMContentLoaded", () => {
 		  if (typeof osuCursor !== "undefined") {
