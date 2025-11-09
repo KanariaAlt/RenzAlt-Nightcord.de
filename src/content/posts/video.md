@@ -58,52 +58,67 @@ draft: false
   overflow: hidden;
   border-radius: 16px;
   margin-top: 24px;
-  height: 130px;
   color: white;
   font-family: "Inter", sans-serif;
+  /* hapus height fix */
+  min-height: 130px;
+  height: auto; /* biarkan tinggi menyesuaikan isi */
 }
+
 .a13-bg {
   position: absolute;
   inset: 0;
   background: url("https://i.ytimg.com/vi/5gIf0_xpFPI/hqdefault.jpg") center/cover;
   filter: blur(30px) brightness(0.6);
   transform: scale(1.2);
+  z-index: 0;
 }
+
 .a13-content {
   position: relative;
   display: flex;
+  flex-wrap: wrap; /* biar gak pecah di layar kecil */
   align-items: center;
   height: 100%;
-  padding: 12px 20px;
+  padding: 12px 20px 16px;
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
+
 .a13-cover img {
   width: 80px;
   height: 80px;
   border-radius: 12px;
   object-fit: cover;
 }
+
 .a13-info {
   flex: 1;
   margin-left: 16px;
+  min-width: 200px;
 }
+
 .a13-tags {
   font-size: 12px;
   opacity: 0.8;
 }
+
 .a13-info h3 {
   margin: 2px 0;
   font-size: 16px;
 }
+
 .a13-info p {
   margin: 0;
   font-size: 13px;
   opacity: 0.8;
 }
+
 .a13-controls {
   margin-top: 8px;
 }
+
 .a13-controls button {
   background: rgba(255, 255, 255, 0.15);
   border: none;
@@ -116,17 +131,20 @@ draft: false
   transition: background 0.3s;
   font-size: 14px;
 }
+
 .a13-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
 .a13-progress {
   position: relative;
-  height: 22px;
+  height: 24px; /* tambah sedikit agar gelombang muat */
   margin-top: 10px;
   border-radius: 2px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.08);
 }
+
 #progress-bar {
   position: absolute;
   bottom: 0;
@@ -137,6 +155,7 @@ draft: false
   transition: width 0.2s linear;
   border-radius: 2px;
 }
+
 .a13-wave-wrapper {
   position: absolute;
   display: flex;
@@ -150,6 +169,7 @@ draft: false
   opacity: 0.4;
   transition: opacity 0.4s ease;
 }
+
 .a13-wave {
   width: 3px;
   height: 4px;
@@ -158,6 +178,7 @@ draft: false
   border-radius: 2px;
   animation: waveAnim 1s ease-in-out infinite;
 }
+
 .a13-wave:nth-child(2) { animation-delay: 0.1s; }
 .a13-wave:nth-child(3) { animation-delay: 0.2s; }
 .a13-wave:nth-child(4) { animation-delay: 0.3s; }
@@ -166,6 +187,18 @@ draft: false
 @keyframes waveAnim {
   0%, 100% { height: 4px; opacity: 0.5; }
   50% { height: 14px; opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .a13-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .a13-info {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
 </style>
 
