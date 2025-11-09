@@ -63,20 +63,22 @@ please follow these tips..
 
   /* Tombol Material You */
   .screenshots-card {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
     background-color: var(--bg-btn);
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 12px;
     width: 100%;
     box-shadow: inset 0 1px 1px rgba(255,255,255,0.04),
                 0 2px 4px rgba(0,0,0,0.25);
-    overflow: hidden;
-    cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .screenshots-card:hover {
+    background-color: rgba(255, 139, 167, 0.1);
+    transform: scale(1.01);
   }
 
   .screenshots-card span {
@@ -95,26 +97,6 @@ please follow these tips..
 
   .screenshots-card:hover .arrow {
     transform: translateX(3px);
-  }
-
-  /* Ripple effect */
-  .screenshots-card::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
-    background: rgba(255, 139, 167, 0.25);
-    width: 100px;
-    height: 100px;
-    pointer-events: none;
-    opacity: 0;
-    transition: transform 0.4s ease, opacity 0.8s ease;
-  }
-
-  .screenshots-card:active::after {
-    transform: scale(4);
-    opacity: 1;
-    transition: 0s;
   }
 
   /* Grid Screenshot */
