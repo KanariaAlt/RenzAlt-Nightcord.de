@@ -80,23 +80,23 @@ const bannerOffset =
 		<title>{pageTitle}</title>
 
 		<meta charset="UTF-8" />
-		<meta name="description" content={description || pageTitle}>
-		<meta name="author" content={profileConfig.name}>
+		<meta name="description" content={description || pageTitle} />
+		<meta name="author" content={profileConfig.name} />
 
-		<meta property="og:site_name" content={siteConfig.title}>
-		<meta property="og:url" content={Astro.url}>
-		<meta property="og:title" content={pageTitle}>
-		<meta property="og:description" content={description || pageTitle}>
+		<meta property="og:site_name" content={siteConfig.title} />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description || pageTitle} />
 		{setOGTypeArticle ? (
 			<meta property="og:type" content="article" />
 		) : (
 			<meta property="og:type" content="website" />
 		)}
 
-		<meta name="twitter:card" content="summary_large_image">
-		<meta property="twitter:url" content={Astro.url}>
-		<meta name="twitter:title" content={pageTitle}>
-		<meta name="twitter:description" content={description || pageTitle}>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description || pageTitle} />
 
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -110,18 +110,19 @@ const bannerOffset =
 			/>
 		))}
 
-		<!-- osu!lazer cursor stylesheet -->
+		<!-- 🎯 osu!lazer cursor stylesheet -->
 		<link rel="stylesheet" href="/osu-cursor/style.css" />
 
+		<!-- Theme init (from Fuwari original) -->
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
 			switch (theme) {
 				case LIGHT_MODE:
 					document.documentElement.classList.remove('dark');
-					break
+					break;
 				case DARK_MODE:
 					document.documentElement.classList.add('dark');
-					break
+					break;
 				case AUTO_MODE:
 					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 						document.documentElement.classList.add('dark');
@@ -156,12 +157,13 @@ const bannerOffset =
 	<body class="min-h-screen transition" class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
 		  data-overlayscrollbars-initialize
 	>
-		<ConfigCarrier >
+		<ConfigCarrier />
 		<slot />
 
+		<!-- menjaga tinggi halaman selama transisi Swup -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 
-		<!-- osu!lazer cursor script -->
+		<!-- 🎯 osu!lazer cursor script -->
 		<script src="/osu-cursor/index.umd.js" defer></script>
 		<script defer>
 		document.addEventListener("DOMContentLoaded", () => {
