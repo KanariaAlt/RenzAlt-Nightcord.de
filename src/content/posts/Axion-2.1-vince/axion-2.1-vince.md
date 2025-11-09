@@ -46,99 +46,77 @@ please follow these tips..
 - Flash LiteGapps "GMS Core, Playstore, GoogleServicesFramework, Common" addons via SukiSU manager
 - or if you want it easy, just repartition the system and flash as usual (optional)
 
-<!-- Google Font: Roboto Flex (Material You style) -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@600&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --accent: #c084fc; /* ungu pastel */
-    --accent-light: #d8b4fe;
+    --accent: #f9a8d4; /* Warna pink lembut */
+    --bg-card: #2a2022; /* Warna background tombol */
+    --text-color: #e5e5e5;
   }
 
-  .screenshots-section {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    text-align: center;
+  .screenshots-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card);
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin: 40px auto 25px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    cursor: default;
+    transition: background 0.3s ease, transform 0.2s ease;
   }
 
-  /* Judul "Screenshots" bergaya Material You */
-  .screenshots-section h2 {
+  .screenshots-card:hover {
+    background-color: rgba(249, 168, 212, 0.08);
+    transform: scale(1.02);
+  }
+
+  .screenshots-card span {
     font-family: "Roboto Flex", sans-serif;
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 1.9rem;
-    letter-spacing: 0.02em;
-    background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 8px rgba(200, 132, 252, 0.25);
-    display: inline-block;
-    position: relative;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    color: var(--text-color);
+    letter-spacing: 0.03em;
   }
 
-  /* Garis aksen lembut di bawah judul */
-  .screenshots-section h2::after {
-    content: "";
-    display: block;
-    height: 4px;
-    width: 80px;
-    margin: 10px auto 0;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    box-shadow: 0 2px 8px rgba(200, 132, 252, 0.35);
-    opacity: 0.8;
+  .screenshots-card .arrow {
+    color: var(--accent);
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
   }
 
-  /* Efek fade saat muncul */
-  .visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  .screenshots-card:hover .arrow {
+    transform: translateX(3px);
   }
 
-  /* Kontainer screenshot */
+  /* Kontainer gambar */
   .screenshots {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
     gap: 14px;
     flex-wrap: nowrap;
-    max-width: 100%;
     padding: 0 10px;
-    margin-top: 25px;
+    max-width: 100%;
   }
 
-  /* Gambar screenshot */
   .screenshots img {
     width: 48%;
     height: auto;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow:
-      0 4px 10px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(255, 255, 255, 0.08);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.2s ease, transform 0.2s ease;
-  }
-
-  .screenshots img:nth-child(1).visible {
-    transition-delay: 0.2s;
-  }
-
-  .screenshots img:nth-child(2).visible {
-    transition-delay: 0.4s;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .screenshots img:hover {
     transform: scale(1.03);
-    box-shadow:
-      0 6px 20px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
   }
 
-  /* Responsif - dua kolom di semua layar tanpa scroll */
+  /* Responsif */
   @media (max-width: 768px) {
     .screenshots {
       gap: 10px;
@@ -158,39 +136,17 @@ please follow these tips..
   }
 </style>
 
-<div class="screenshots-section">
-  <h2 class="fade-in-element">Screenshots</h2>
-  <div class="screenshots">
-    <img class="fade-in-element"
-      src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg"
-      alt="Screenshot 1">
-    <img class="fade-in-element"
-      src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg"
-      alt="Screenshot 2">
-  </div>
+<!-- Judul ala Material You -->
+<div class="screenshots-card">
+  <span>Screenshots</span>
+  <span class="arrow">›</span>
 </div>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
-</script>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
-</script>
+<!-- Gambar -->
+<div class="screenshots">
+  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
+  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
+</div>
 
 ## Downloads
 
