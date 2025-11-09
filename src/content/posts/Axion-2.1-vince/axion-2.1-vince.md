@@ -19,7 +19,7 @@ BUILD DATE : 2 November 2025
 TYPE : Vanila Build
 ```
 
-**Changelog**
+> **Changelog**
 <ul>
     <li>October 2025 security patch</li>
     <li>fixed Camera & libgf_* missing depedency</li>
@@ -33,10 +33,10 @@ It seems that AxionOS 2.1 is taking up too much system size so there is not enou
 please follow these tips..
 :::
 
-**Prerequisites**
+> **Prerequisites**
 - Unlocked Bootloader
 
-**Flashing Instruction**
+> **Flashing Instruction**
 - Wipe System, Vendor, Cache and Dalvik
 - Wipe Data (optional if from older build)
 - Install Rom
