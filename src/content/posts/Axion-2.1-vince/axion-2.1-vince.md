@@ -2,6 +2,7 @@
 title: AxionOS-2.1-Vince-Baklava
 published: 2025-11-02
 description: Android 16 QPR0.
+image: ./cover.jpg
 tags: [Baklava, Vince, Alt]
 category: Custom ROM
 draft: false
