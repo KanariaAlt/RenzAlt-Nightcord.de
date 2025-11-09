@@ -50,68 +50,74 @@ please follow these tips..
 
 <style>
   :root {
-    --accent: #ff8ba7;       /* pink muda */
-    --text-dark: #1a1517;    /* teks gelap untuk kontras */
-    --bg-base: #1b1214;      /* latar belakang umum halaman */
-    --shadow: 0 2px 6px rgba(0,0,0,0.35);
+    --accent: #ff8ba7;       /* Warna aksen pink muda */
+    --text-dark: #1a1517;    /* Warna teks gelap */
+    --bg-base: #1b1214;      /* Warna latar belakang utama */
+    --card-bg: #2a1d20;      /* Warna dasar card */
+    --shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
   }
 
   body {
     background-color: var(--bg-base);
+    color: white;
+    font-family: "Roboto Flex", sans-serif;
+    margin: 0;
+    padding: 0;
   }
 
   .screenshot-section {
-    max-width: 720px;
-    margin: 20px auto;
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
   }
 
-  /* Tombol judul screenshots (warna pink muda seperti tombol Custom ROM) */
+  /* Tombol judul "Screenshots" */
   .screenshots-card {
-    position: relative;
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
     background-color: var(--accent);
     border-radius: 12px;
-    padding: 10px 12px;
-    width: 100%;
+    padding: 10px 20px;
     box-shadow: var(--shadow);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .screenshots-card span {
-    font-family: "Roboto Flex", sans-serif;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .screenshots-card .arrow {
+    font-size: 1.2rem;
+    margin-left: 6px;
     color: var(--text-dark);
   }
 
   .screenshots-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
   }
 
-  .screenshots-card .arrow {
-    font-size: 1rem;
-    color: var(--text-dark);
-  }
-
-  /* Bagian gambar screenshots */
+  /* Layout gambar selalu berdampingan */
   .screenshots {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
     gap: 14px;
-    margin-top: 10px;
+    margin-top: 18px;
+    overflow-x: auto;
+    padding: 10px;
   }
 
   .screenshots img {
-    flex: 1 1 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-    border-radius: 16px;
-    background: #2b2023;
+    flex: 0 0 auto;
+    width: 48%;
+    max-width: 400px;
+    border-radius: 18px;
+    background: var(--card-bg);
     padding: 6px;
     box-shadow: var(--shadow);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -122,10 +128,16 @@ please follow these tips..
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
   }
 
+  /* Buat agar tetap sejajar di HP kecil */
   @media (max-width: 600px) {
+    .screenshots {
+      gap: 10px;
+    }
+
     .screenshots img {
-      flex: 1 1 100%;
-      max-width: 100%;
+      width: 45%;
+      padding: 4px;
+      border-radius: 14px;
     }
   }
 </style>
@@ -137,8 +149,8 @@ please follow these tips..
   </div>
 
   <div class="screenshots">
-    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
-    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
+    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot kiri">
+    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot kanan">
   </div>
 </div>
 
