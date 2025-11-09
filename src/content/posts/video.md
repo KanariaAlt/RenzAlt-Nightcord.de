@@ -21,7 +21,7 @@ draft: false
 </iframe>
 
 <!-- Compact Android 13 Music Card -->
-<div class="a13-music-card hidden">
+<div class="a13-music-card">
   <div class="a13-bg"></div>
   <div class="a13-content">
     <div class="a13-cover">
@@ -59,7 +59,6 @@ draft: false
 </div>
 
 <style>
-/* === Base Card === */
 .a13-music-card {
   position: relative;
   overflow: hidden;
@@ -68,14 +67,6 @@ draft: false
   color: white;
   font-family: "Inter", sans-serif;
   min-height: 140px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.a13-music-card.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .a13-bg {
@@ -98,22 +89,21 @@ draft: false
   border-radius: 14px;
 }
 
-/* === Cover === */
+/* Cover lebih kecil tapi tetap menonjol */
 .a13-cover img {
   width: 95px;
   height: 95px;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .a13-cover img:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
-/* === Info === */
+/* Info lebih rapat */
 .a13-info {
   flex: 1;
   margin-left: 14px;
@@ -140,7 +130,7 @@ draft: false
   opacity: 0.75;
 }
 
-/* === Controls === */
+/* Controls kecil tapi jelas */
 .a13-controls {
   margin-top: 8px;
   display: flex;
@@ -173,7 +163,7 @@ draft: false
   pointer-events: none;
 }
 
-/* === Responsive === */
+/* Responsif */
 @media (max-width: 768px) {
   .a13-content {
     flex-direction: column;
@@ -216,15 +206,4 @@ function onPlayerStateChange(event) {
     playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
   }
 }
-/* === Intersection Observer untuk animasi muncul === */
-const card = document.querySelector('.a13-music-card');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      card.classList.add('show');
-      observer.unobserve(card);
-    }
-  });
-}, { threshold: 0.2 });
-observer.observe(card);
 </script>
