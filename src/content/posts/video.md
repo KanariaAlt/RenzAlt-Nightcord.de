@@ -25,14 +25,14 @@ draft: false
   <div class="a13-bg"></div>
   <div class="a13-content">
     <div class="a13-cover">
-      <img src="https://i.ytimg.com/vi/5gIf0_xpFPI/hqdefault.jpg" alt="cover">
+      <img src="https://raw.githubusercontent.com/KanariaAlt/Nightcord-at-25-Playlist/refs/heads/WIP/src/data/covers/deco.jpg" alt="cover">
     </div>
     <div class="a13-info">
       <div class="a13-tags">
-        <span>Solo</span> • <span>Nightcord</span>
+        <span>Solo</span> • <span>MIMI</span>
       </div>
       <h3>ふわり feat. MIMI, 初音ミク</h3>
-      <p>Nightcord-at25-playlist</p>
+      <p>MIMI</p>
       <div class="a13-controls">
         <button id="prevBtn">⏮️</button>
         <button id="playPauseBtn">▶️</button>
