@@ -50,56 +50,55 @@ please follow these tips..
 
 <style>
   :root {
-    --accent: #ff8ba7; /* warna aksen pink */
-    --bg-btn: #2b2023; /* warna tombol seperti custom rom */
-    --text-color: #f4e4e7; /* warna teks */
+    --accent: #ff8ba7;       /* pink muda */
+    --text-dark: #1a1517;    /* teks gelap untuk kontras */
+    --bg-base: #1b1214;      /* latar belakang umum halaman */
+    --shadow: 0 2px 6px rgba(0,0,0,0.35);
   }
 
-  /* Container utama */
+  body {
+    background-color: var(--bg-base);
+  }
+
   .screenshot-section {
     max-width: 720px;
     margin: 20px auto;
   }
 
-  /* Tombol Material You */
+  /* Tombol judul screenshots (warna pink muda seperti tombol Custom ROM) */
   .screenshots-card {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    background-color: var(--bg-btn);
-    border-radius: 14px;
-    padding: 12px;
+    background-color: var(--accent);
+    border-radius: 12px;
+    padding: 10px 12px;
     width: 100%;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,0.04),
-                0 2px 4px rgba(0,0,0,0.25);
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .screenshots-card:hover {
-    background-color: rgba(255, 139, 167, 0.1);
-    transform: scale(1.01);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .screenshots-card span {
     font-family: "Roboto Flex", sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-color);
-    text-align: center;
+    color: var(--text-dark);
+  }
+
+  .screenshots-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   }
 
   .screenshots-card .arrow {
-    color: var(--accent);
     font-size: 1rem;
-    transition: transform 0.2s ease;
+    color: var(--text-dark);
   }
 
-  .screenshots-card:hover .arrow {
-    transform: translateX(3px);
-  }
-
-  /* Grid Screenshot */
+  /* Bagian gambar screenshots */
   .screenshots {
     display: flex;
     justify-content: space-between;
@@ -111,14 +110,16 @@ please follow these tips..
   .screenshots img {
     flex: 1 1 calc(50% - 10px);
     max-width: calc(50% - 10px);
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
+    background: #2b2023;
+    padding: 6px;
+    box-shadow: var(--shadow);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .screenshots img:hover {
     transform: scale(1.03);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
   }
 
   @media (max-width: 600px) {
