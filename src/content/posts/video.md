@@ -1,5 +1,5 @@
 ---
-title: Music A13 card style test from Nightcord-at25-playlist
+title: Music BetterNCM card style test from RenzAlt BetterNCM Material
 published: 2025-08-01
 description: Test From my react.
 tags: [Music]
