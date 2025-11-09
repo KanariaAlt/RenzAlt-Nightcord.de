@@ -66,14 +66,14 @@ draft: false
   margin-top: 14px;
   color: white;
   font-family: "Inter", sans-serif;
-  min-height: 140px;
+  min-height: 135px;
 }
 
 .a13-bg {
   position: absolute;
   inset: 0;
   background: url("https://i.ytimg.com/vi/5gIf0_xpFPI/hqdefault.jpg") center/cover;
-  filter: blur(25px) brightness(0.6);
+  filter: blur(20px) brightness(0.65);
   transform: scale(1.1);
   z-index: 0;
 }
@@ -82,20 +82,20 @@ draft: false
   position: relative;
   display: flex;
   align-items: center;
-  padding: 12px 18px;
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.45);
+  padding: 10px 16px;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1;
   border-radius: 14px;
 }
 
-/* Cover lebih kecil tapi tetap menonjol */
+/* Cover dominan tapi lembut */
 .a13-cover img {
-  width: 95px;
-  height: 95px;
+  width: 100px;
+  height: 100px;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.25s ease;
 }
 
@@ -103,7 +103,7 @@ draft: false
   transform: scale(1.05);
 }
 
-/* Info lebih rapat */
+/* Info compact */
 .a13-info {
   flex: 1;
   margin-left: 14px;
@@ -113,26 +113,26 @@ draft: false
 }
 
 .a13-tags {
-  font-size: 12px;
+  font-size: 11.5px;
   opacity: 0.8;
 }
 
 .a13-info h3 {
   margin: 3px 0;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 15px;
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .a13-info p {
   margin: 0;
-  font-size: 13px;
+  font-size: 12.5px;
   opacity: 0.75;
 }
 
-/* Controls kecil tapi jelas */
+/* Controls lebih kecil dan rapi */
 .a13-controls {
-  margin-top: 8px;
+  margin-top: 6px;
   display: flex;
   align-items: center;
 }
@@ -142,8 +142,8 @@ draft: false
   border: none;
   color: white;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   margin-right: 5px;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -154,12 +154,12 @@ draft: false
 
 .a13-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .a13-controls svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   pointer-events: none;
 }
 
@@ -168,7 +168,7 @@ draft: false
   .a13-content {
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px;
+    padding: 10px;
   }
   .a13-cover img {
     width: 100%;
