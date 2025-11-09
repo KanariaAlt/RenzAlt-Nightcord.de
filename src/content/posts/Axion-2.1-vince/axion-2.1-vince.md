@@ -53,9 +53,10 @@ please follow these tips..
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 25px;
-    flex-wrap: wrap;
+    gap: 20px;
+    flex-wrap: nowrap; /* tetap sejajar */
     margin-top: 30px;
+    overflow-x: auto; /* agar bisa digeser di layar kecil */
   }
 
   .screenshots img {
@@ -63,6 +64,7 @@ please follow these tips..
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* mencegah gambar mengecil */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -71,17 +73,17 @@ please follow these tips..
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   }
 
-  /* Responsif di mobile */
+  /* Responsif agar pas di mobile tapi tetap dua kolom */
   @media (max-width: 768px) {
     .screenshots {
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+      justify-content: flex-start;
+      padding: 0 10px;
+      scroll-snap-type: x mandatory;
     }
 
     .screenshots img {
-      width: 90%;
-      max-width: 400px;
+      width: 280px;
+      scroll-snap-align: center;
     }
   }
 </style>
