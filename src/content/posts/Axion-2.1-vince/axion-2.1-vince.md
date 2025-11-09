@@ -46,6 +46,8 @@ please follow these tips..
 - Flash LiteGapps "GMS Core, Playstore, GoogleServicesFramework, Common" addons via SukiSU manager
 - or if you want it easy, just repartition the system and flash as usual (optional)
 
+## Screenshot
+
 <style>
   .screenshots-section {
     margin-top: 40px;
