@@ -7,8 +7,6 @@ category: test
 draft: false
 ---
 
-## YouTube
-
 <iframe
   id="ytplayer"
   width="100%"
