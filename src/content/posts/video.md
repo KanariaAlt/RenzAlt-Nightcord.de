@@ -55,17 +55,6 @@ draft: false
           </svg>
         </button>
       </div>
-      <!-- Progress & Wave -->
-      <div class="a13-progress">
-        <div class="a13-wave-wrapper" id="waveWrapper">
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-        </div>
-        <div id="progress-bar"></div>
-      </div>
     </div>
   </div>
 </div>
@@ -132,7 +121,7 @@ draft: false
 
 /* Controls */
 .a13-controls {
-  margin-top: 8px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
 }
@@ -142,11 +131,11 @@ draft: false
   border: none;
   color: white;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-right: 8px;
+  width: 36px;
+  height: 36px;
+  margin-right: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,67 +143,13 @@ draft: false
 
 .a13-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .a13-controls svg {
-  width: 22px;
-  height: 22px;
-  pointer-events: none;
-}
-
-/* Progress & Wave */
-.a13-progress {
-  position: relative;
-  height: 24px;
-  margin-top: 10px;
-  border-radius: 2px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-#progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #89f7fe, #66a6ff);
-  width: 0%;
-  transition: width 0.2s linear;
-  border-radius: 2px;
-}
-
-.a13-wave-wrapper {
-  position: absolute;
-  display: flex;
-  align-items: flex-end;
-  bottom: 4px;
-  left: 0;
+  width: 18px;
   height: 18px;
-  width: 100%;
-  justify-content: center;
   pointer-events: none;
-  opacity: 0.4;
-  transition: opacity 0.4s ease;
-}
-
-.a13-wave {
-  width: 3px;
-  height: 4px;
-  margin: 0 2px;
-  background: rgba(173, 216, 230, 0.8);
-  border-radius: 2px;
-  animation: waveAnim 1s ease-in-out infinite;
-}
-
-.a13-wave:nth-child(2) { animation-delay: 0.1s; }
-.a13-wave:nth-child(3) { animation-delay: 0.2s; }
-.a13-wave:nth-child(4) { animation-delay: 0.3s; }
-.a13-wave:nth-child(5) { animation-delay: 0.4s; }
-
-@keyframes waveAnim {
-  0%, 100% { height: 4px; opacity: 0.5; }
-  50% { height: 14px; opacity: 1; }
 }
 
 /* Responsive */
@@ -233,10 +168,8 @@ draft: false
 <!-- YouTube API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-let player, isPlaying = false, progressUpdater;
+let player, isPlaying = false;
 const playPauseBtn = document.getElementById('playPauseBtn');
-const progressBar = document.getElementById('progress-bar');
-const waveWrapper = document.getElementById('waveWrapper');
 const playIcon = document.getElementById('playIcon');
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('ytplayer', {
@@ -252,28 +185,9 @@ function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) {
     isPlaying = true;
     playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-    waveWrapper.style.opacity = '1';
-    startProgress();
   } else {
     isPlaying = false;
     playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-    waveWrapper.style.opacity = '0.4';
-    stopProgress();
   }
-}
-function startProgress() {
-  clearInterval(progressUpdater);
-  progressUpdater = setInterval(() => {
-    if (!player || !player.getDuration) return;
-    const current = player.getCurrentTime();
-    const duration = player.getDuration();
-    if (duration > 0) {
-      const progress = (current / duration) * 100;
-      progressBar.style.width = progress + '%';
-    }
-  }, 500);
-}
-function stopProgress() {
-  clearInterval(progressUpdater);
 }
 </script>
