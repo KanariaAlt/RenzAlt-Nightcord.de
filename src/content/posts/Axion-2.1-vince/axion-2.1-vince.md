@@ -53,10 +53,9 @@ please follow these tips..
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 20px;
-    flex-wrap: nowrap; /* tetap sejajar */
+    gap: 10px;
+    flex-wrap: nowrap;
     margin-top: 30px;
-    overflow-x: auto; /* agar bisa digeser di layar kecil */
   }
 
   .screenshots img {
@@ -64,7 +63,6 @@ please follow these tips..
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    flex-shrink: 0; /* mencegah gambar mengecil */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -73,17 +71,22 @@ please follow these tips..
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   }
 
-  /* Responsif agar pas di mobile tapi tetap dua kolom */
+  /* Responsif - tetap dua kolom di semua ukuran layar */
   @media (max-width: 768px) {
     .screenshots {
-      justify-content: flex-start;
-      padding: 0 10px;
-      scroll-snap-type: x mandatory;
+      gap: 8px;
     }
 
     .screenshots img {
-      width: 280px;
-      scroll-snap-align: center;
+      width: 48%; /* dua sejajar proporsional */
+      max-width: none;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .screenshots img {
+      width: 48%; /* tetap dua kolom, tapi otomatis mengecil */
     }
   }
 </style>
