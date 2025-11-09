@@ -60,36 +60,41 @@ please follow these tips..
     align-items: flex-start;
     gap: 10px;
     flex-wrap: nowrap;
-    margin-top: 10px; /* lebih rapat dengan judul */
+    margin-top: 10px;
   }
 
   .screenshots img {
     width: 330px;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s ease,
+                opacity 0.6s ease;
+    transform-style: preserve-3d;
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(25px) scale(1);
+    will-change: transform;
   }
 
-  /* Efek muncul saat elemen terlihat */
+  /* Saat muncul di layar */
   .visible {
     opacity: 1 !important;
-    transform: translateY(0) !important;
+    transform: translateY(0) scale(1);
   }
 
+  /* Hover default (zoom + shadow) */
   .screenshots img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
   }
 
   /* Responsif */
   @media (max-width: 768px) {
     .screenshots {
       gap: 8px;
-      margin-top: 8px; /* juga dikurangi di mobile */
+      margin-top: 8px;
     }
+
     .screenshots img {
       width: 48%;
       max-width: none;
@@ -106,23 +111,43 @@ please follow these tips..
 
 <div class="screenshots-section">
   <div class="screenshots">
-    <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
-    <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
+    <img class="fade-in-element tilt-hover" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
+    <img class="fade-in-element tilt-hover" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
   </div>
 </div>
 
 <script>
-  // Animasi fade-in saat elemen muncul di layar
+  // Efek fade-in saat elemen muncul
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // hanya animasi sekali
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.3 });
 
   document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+
+  // Efek tilt + zoom halus
+  document.querySelectorAll('.tilt-hover').forEach((img) => {
+    img.addEventListener('mousemove', (e) => {
+      const rect = img.getBoundingClientRect();
+      const x = e.clientX - rect.left; // posisi X relatif
+      const y = e.clientY - rect.top;  // posisi Y relatif
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * 6; // derajat miring
+      const rotateY = ((x - centerX) / centerX) * -6;
+
+      img.style.transform = `scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    img.addEventListener('mouseleave', () => {
+      img.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
+    });
+  });
 </script>
 
 ## Downloads
