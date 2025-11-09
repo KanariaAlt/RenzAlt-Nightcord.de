@@ -63,10 +63,10 @@ draft: false
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  margin-top: 24px;
+  margin-top: 16px; /* sedikit dikurangi agar lebih dekat ke iframe */
   color: white;
   font-family: "Inter", sans-serif;
-  min-height: 160px;
+  min-height: 170px;
 }
 
 .a13-bg {
@@ -82,24 +82,30 @@ draft: false
   position: relative;
   display: flex;
   align-items: center;
-  padding: 18px 24px;
+  padding: 16px 22px;
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.45);
   z-index: 1;
   border-radius: 16px;
 }
 
+/* Cover lebih besar */
 .a13-cover img {
-  width: 130px;
-  height: 130px;
-  border-radius: 14px;
+  width: 140px;
+  height: 140px;
+  border-radius: 16px;
   object-fit: cover;
-  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.a13-cover img:hover {
+  transform: scale(1.03);
 }
 
 .a13-info {
   flex: 1;
-  margin-left: 22px;
+  margin-left: 16px; /* jarak diperkecil agar lebih rapat */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,6 +119,7 @@ draft: false
 .a13-info h3 {
   margin: 4px 0;
   font-size: 18px;
+  line-height: 1.3;
 }
 
 .a13-info p {
@@ -123,7 +130,7 @@ draft: false
 
 /* Controls */
 .a13-controls {
-  margin-top: 12px;
+  margin-top: 10px; /* lebih rapat */
   display: flex;
   align-items: center;
 }
