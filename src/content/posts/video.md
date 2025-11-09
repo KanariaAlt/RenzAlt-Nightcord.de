@@ -66,7 +66,7 @@ draft: false
   margin-top: 14px;
   color: var(--card-text, #fff);
   font-family: "Inter", sans-serif;
-  min-height: 140px;
+  min-height: 135px;
 }
 
 /* Background blur */
@@ -84,7 +84,7 @@ draft: false
   position: relative;
   display: flex;
   align-items: center;
-  padding: 14px 20px;
+  padding: 12px 16px;
   backdrop-filter: blur(8px);
   background: rgba(0, 0, 0, 0.35);
   z-index: 1;
@@ -94,10 +94,13 @@ draft: false
 /* Cover */
 .a13-cover {
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .a13-cover img {
-  width: 110px;
-  height: 110px;
+  width: 95px;
+  height: 95px;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 3px 10px rgba(0,0,0,0.4);
@@ -107,32 +110,29 @@ draft: false
   transform: scale(1.05);
 }
 
-/* Info lebih ke tengah */
+/* Info */
 .a13-info {
   flex: 1;
-  margin-left: 20px;
+  margin-left: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Tag */
 .a13-tags {
   font-size: 11.5px;
   opacity: 0.85;
 }
 
-/* Judul */
 .a13-info h3 {
   margin: 4px 0 2px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.3;
-  word-break: break-word;
   color: var(--a13-title, #fff);
+  word-break: break-word;
 }
 
-/* Artist */
 .a13-info p {
   margin: 0;
   font-size: 13px;
@@ -151,9 +151,9 @@ draft: false
   border: none;
   color: inherit;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  margin-right: 8px;
+  width: 28px;
+  height: 28px;
+  margin-right: 6px;
   cursor: pointer;
   transition: all 0.25s ease;
   display: flex;
@@ -162,7 +162,7 @@ draft: false
 }
 .a13-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 .a13-controls svg {
   width: 14px;
@@ -196,24 +196,30 @@ draft: false
   }
 }
 
-/* Responsif */
+/* ✅ Mobile tetap horizontal tapi lebih compact */
 @media (max-width: 768px) {
   .a13-content {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    padding: 12px;
+    padding: 10px 12px;
   }
   .a13-cover img {
-    width: 100%;
-    height: auto;
+    width: 80px;
+    height: 80px;
   }
   .a13-info {
-    margin-left: 0;
-    margin-top: 10px;
+    margin-left: 10px;
   }
-  .a13-controls {
-    justify-content: center;
+  .a13-info h3 {
+    font-size: 14px;
+  }
+  .a13-info p {
+    font-size: 12px;
+  }
+  .a13-controls button {
+    width: 26px;
+    height: 26px;
+    margin-right: 4px;
   }
 }
 </style>
