@@ -50,10 +50,10 @@ please follow these tips..
 
 <tr>
   <td>
-    <img src="https://raw.githubusercontent.com/KanadeAlt/AmiaAlt-Stuff/refs/heads/reimu/screenshots/axi1.jpg" width="330" height="620" align="left" />
+    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" width="330" height="620" align="left" />
   </td>
   <td>
-    <img src="https://raw.githubusercontent.com/KanadeAlt/AmiaAlt-Stuff/refs/heads/reimu/screenshots/axi2.jpg" width="330" height="620" align="center" />
+    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" width="330" height="620" align="center" />
   </td>
 </tr>
 
