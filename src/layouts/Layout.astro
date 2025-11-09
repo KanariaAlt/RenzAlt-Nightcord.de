@@ -110,9 +110,6 @@ const bannerOffset =
 			/>
 		))}
 
-		<!-- osu!lazer cursor stylesheet -->
-		<link rel="stylesheet" href="/osu-cursor/style.css" />
-
 		<!-- Theme init (from Fuwari original) -->
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
@@ -162,33 +159,6 @@ const bannerOffset =
 
 		<!-- menjaga tinggi halaman selama transisi Swup -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
-
-		<!-- osu!lazer cursor -->
-		<script src="/osu-cursor/anime.min.js" is:inline></script>
-<script type="module">
-  import osuCursor from "/osu-cursor/osu-cursor.js";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const cursor = new osuCursor({
-      rotate: true,
-      trail: true,
-    });
-    console.log("osu!cursor initialized ✅");
-
-    // Hilangkan cursor bawaan
-    const style = document.createElement("style");
-    style.textContent = `html, body, * { cursor: none !important; }`;
-    document.head.appendChild(style);
-
-    // re-init saat Swup pindah halaman
-    if (window?.swup?.hooks) {
-      window.swup.hooks.on("page:view", () => {
-        cursor.stop?.();
-        cursor.init?.();
-      });
-    }
-  });
-</script>
 	</body>
 </html>
 
