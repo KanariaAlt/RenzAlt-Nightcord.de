@@ -48,14 +48,22 @@ please follow these tips..
 
 ## Screenshots
 
-<tr>
-  <td>
-    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" width="330" height="620" align="left" />
-  </td>
-  <td>
-    <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" width="330" height="620" align="center" />
-  </td>
-</tr>
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+  <img 
+    src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" 
+    width="330" 
+    height="620" 
+    style="border-radius: 10px; object-fit: cover;"
+    alt="Screenshot 1" 
+  />
+  <img 
+    src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" 
+    width="330" 
+    height="620" 
+    style="border-radius: 10px; object-fit: cover;"
+    alt="Screenshot 2" 
+  />
+</div>
 
 ## Downloads
 
