@@ -46,7 +46,7 @@ please follow these tips..
 - Flash LiteGapps "GMS Core, Playstore, GoogleServicesFramework, Common" addons via SukiSU manager
 - or if you want it easy, just repartition the system and flash as usual (optional)
 
-## Screenshot
+> ## Downloads
 
 <style>
   .screenshots-section {
@@ -188,19 +188,5 @@ please follow these tips..
 > - [axion-2.1-NIGHTLY-20251102-COMMUNITY-VANILLA-vince.zip](https://pixeldrain.com/u/wWvrmK4w)
 > - [Litegapps-addons gms/playstore/GoogleServicesFramework/common](https://sourceforge.net/projects/litegapps/files/addon/arm64/36/core/)
 
-
 > ### Optional
-- [vince_increase_system_to_4.5gb.zip](https://t.me/MI8953/12/8126)
-
-## Downloads
-
-[SukiSU_3.1.9_13307-release.apk](https://t.me/MI8953/16/5640)
-
-[20251024-kernel-vince-defconfig.img](https://t.me/RenzAlt_Archive/17)
-
-[axion-2.1-NIGHTLY-20251102-COMMUNITY-VANILLA-vince.zip](https://pixeldrain.com/u/wWvrmK4w)
-
-[Litegapps-addons gms/playstore/GoogleServicesFramework/common](https://sourceforge.net/projects/litegapps/files/addon/arm64/36/core/)
-
-**Optional**
-- [vince_increase_system_to_4.5gb.zip](https://t.me/MI8953/12/8126)
+> - [vince_increase_system_to_4.5gb.zip](https://t.me/MI8953/12/8126)
