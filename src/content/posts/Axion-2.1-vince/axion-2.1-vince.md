@@ -49,15 +49,6 @@ please follow these tips..
 ## Screenshot
 
 <style>
-  /* Center heading Screenshot */
-  h2:has(+ .screenshots-section),
-  h3:has(+ .screenshots-section) {
-    text-align: center;
-    font-weight: 600;
-    margin-bottom: 10px; /* jarak kecil biar dekat dengan gambar */
-    color: inherit; /* ikuti warna tema (dark/light) */
-  }
-
   .screenshots-section {
     margin-top: 20px;
     text-align: center;
