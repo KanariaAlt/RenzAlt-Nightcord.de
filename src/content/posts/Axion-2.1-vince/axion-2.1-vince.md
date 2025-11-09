@@ -54,13 +54,26 @@ please follow these tips..
   }
 
   .screenshots-section h2 {
-    color: #fff;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 20px;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Default (dark mode) */
+  body,
+  .screenshots-section h2 {
+    color: #fff;
+  }
+
+  /* Light mode */
+  @media (prefers-color-scheme: light) {
+    .screenshots-section h2 {
+      color: #111; /* hitam elegan */
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
   }
 
   .screenshots {
@@ -102,7 +115,7 @@ please follow these tips..
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   }
 
-  /* Responsif: tetap dua kolom di semua layar */
+  /* Responsif */
   @media (max-width: 768px) {
     .screenshots {
       gap: 10px;
