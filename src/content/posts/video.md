@@ -33,13 +33,11 @@ draft: false
       </div>
       <h3>ふわり feat. MIMI, 初音ミク</h3>
       <p>Nightcord-at25-playlist</p>
-
       <div class="a13-controls">
         <button id="prevBtn">⏮️</button>
         <button id="playPauseBtn">▶️</button>
         <button id="nextBtn">⏭️</button>
       </div>
-
       <div class="a13-progress">
         <div class="a13-wave-wrapper" id="waveWrapper">
           <div class="a13-wave"></div>
@@ -78,7 +76,7 @@ draft: false
   height: 100%;
   padding: 12px 20px;
   backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
 }
 .a13-cover img {
   width: 80px;
@@ -107,7 +105,7 @@ draft: false
   margin-top: 8px;
 }
 .a13-controls button {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   border: none;
   color: white;
   border-radius: 50%;
@@ -116,9 +114,10 @@ draft: false
   margin-right: 8px;
   cursor: pointer;
   transition: background 0.3s;
+  font-size: 14px;
 }
 .a13-controls button:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 .a13-progress {
   position: relative;
@@ -126,14 +125,14 @@ draft: false
   margin-top: 10px;
   border-radius: 2px;
   overflow: hidden;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 #progress-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   height: 4px;
-  background: linear-gradient(90deg,#89f7fe,#66a6ff);
+  background: linear-gradient(90deg, #89f7fe, #66a6ff);
   width: 0%;
   transition: width 0.2s linear;
   border-radius: 2px;
@@ -148,48 +147,46 @@ draft: false
   width: 100%;
   justify-content: center;
   pointer-events: none;
+  opacity: 0.4;
+  transition: opacity 0.4s ease;
 }
 .a13-wave {
   width: 3px;
   height: 4px;
   margin: 0 2px;
-  background: rgba(173,216,230,0.8);
+  background: rgba(173, 216, 230, 0.8);
   border-radius: 2px;
   animation: waveAnim 1s ease-in-out infinite;
 }
-.a13-wave:nth-child(2){animation-delay:0.1s}
-.a13-wave:nth-child(3){animation-delay:0.2s}
-.a13-wave:nth-child(4){animation-delay:0.3s}
-.a13-wave:nth-child(5){animation-delay:0.4s}
+.a13-wave:nth-child(2) { animation-delay: 0.1s; }
+.a13-wave:nth-child(3) { animation-delay: 0.2s; }
+.a13-wave:nth-child(4) { animation-delay: 0.3s; }
+.a13-wave:nth-child(5) { animation-delay: 0.4s; }
 
 @keyframes waveAnim {
-  0%,100% {height:4px; opacity:0.5}
-  50% {height:14px; opacity:1}
+  0%, 100% { height: 4px; opacity: 0.5; }
+  50% { height: 14px; opacity: 1; }
 }
 </style>
 
-<!-- YouTube IFrame API -->
+<!-- Load YouTube API safely -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-let player;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('ytplayer', {
-    events: { 'onStateChange': onPlayerStateChange }
-  });
-}
-
+let player, isPlaying = false, progressUpdater;
 const playPauseBtn = document.getElementById('playPauseBtn');
 const progressBar = document.getElementById('progress-bar');
 const waveWrapper = document.getElementById('waveWrapper');
-let isPlaying = false;
-let progressUpdater;
+
+window.onYouTubeIframeAPIReady = () => {
+  player = new YT.Player('ytplayer', {
+    events: { onStateChange: onPlayerStateChange }
+  });
+};
 
 playPauseBtn.addEventListener('click', () => {
-  if (!isPlaying) {
-    player.playVideo();
-  } else {
-    player.pauseVideo();
-  }
+  if (!player) return;
+  if (!isPlaying) player.playVideo();
+  else player.pauseVideo();
 });
 
 function onPlayerStateChange(event) {
@@ -209,6 +206,7 @@ function onPlayerStateChange(event) {
 function startProgress() {
   clearInterval(progressUpdater);
   progressUpdater = setInterval(() => {
+    if (!player || !player.getDuration) return;
     const current = player.getCurrentTime();
     const duration = player.getDuration();
     if (duration > 0) {
