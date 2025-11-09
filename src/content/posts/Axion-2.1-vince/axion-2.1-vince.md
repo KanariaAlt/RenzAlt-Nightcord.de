@@ -50,7 +50,7 @@ please follow these tips..
 
 <style>
   .screenshots-section {
-    margin-top: 40px;
+    margin-top: 20px; /* sedikit lebih rapat dari sebelumnya */
     text-align: center;
   }
 
@@ -60,7 +60,7 @@ please follow these tips..
     align-items: flex-start;
     gap: 10px;
     flex-wrap: nowrap;
-    margin-top: 30px;
+    margin-top: 10px; /* <== ubah dari 30px jadi 10px */
   }
 
   .screenshots img {
@@ -88,6 +88,7 @@ please follow these tips..
   @media (max-width: 768px) {
     .screenshots {
       gap: 8px;
+      margin-top: 8px; /* juga dikurangi di mobile */
     }
 
     .screenshots img {
