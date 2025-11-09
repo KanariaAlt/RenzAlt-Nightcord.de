@@ -7,216 +7,132 @@ category: test
 draft: false
 ---
 
-## YouTube
+---
+// Komponen Astro biasa, tidak perlu props untuk versi dasar
+---
 
-<iframe
-  id="ytplayer"
-  width="100%"
-  height="468"
-  src="https://www.youtube.com/embed/5gIf0_xpFPI?enablejsapi=1&rel=0&modestbranding=1"
-  title="YouTube video player"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen>
-</iframe>
+<section class="youtube-section">
+  <h2>YouTube</h2>
 
-<!-- Android 13 Style Music Card -->
-<div class="a13-music-card">
-  <div class="a13-bg"></div>
-  <div class="a13-content">
-    <div class="a13-cover">
-      <img src="https://i.ytimg.com/vi/5gIf0_xpFPI/hqdefault.jpg" alt="cover">
-    </div>
-    <div class="a13-info">
-      <div class="a13-tags">
-        <span>Solo</span> • <span>Nightcord</span>
-      </div>
-      <h3>ふわり feat. MIMI, 初音ミク</h3>
-      <p>Nightcord-at25-playlist</p>
-      <div class="a13-controls">
-        <button id="prevBtn">⏮️</button>
-        <button id="playPauseBtn">▶️</button>
-        <button id="nextBtn">⏭️</button>
-      </div>
-      <div class="a13-progress">
-        <div class="a13-wave-wrapper" id="waveWrapper">
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-          <div class="a13-wave"></div>
-        </div>
-        <div id="progress-bar"></div>
+  <div class="youtube-wrapper">
+    <iframe
+      id="youtube-player"
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/5gIf0_xpFPI?enablejsapi=1&rel=0&modestbranding=1&iv_load_policy=3"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <div class="a13-controls">
+    <button id="playPauseBtn">▶️</button>
+    <div class="a13-progress">
+      <div class="a13-wave-wrapper" id="waveWrapper">
+        <div class="a13-wave"></div>
+        <div class="a13-wave"></div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <style>
-.a13-music-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  margin-top: 24px;
-  height: 130px;
-  color: white;
-  font-family: "Inter", sans-serif;
-}
-.a13-bg {
-  position: absolute;
-  inset: 0;
-  background: url("https://i.ytimg.com/vi/5gIf0_xpFPI/hqdefault.jpg") center/cover;
-  filter: blur(30px) brightness(0.6);
-  transform: scale(1.2);
-}
-.a13-content {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 12px 20px;
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.4);
-}
-.a13-cover img {
-  width: 80px;
-  height: 80px;
+.youtube-section {
+  text-align: center;
+  background: #1e1b1f;
+  padding: 20px;
   border-radius: 12px;
-  object-fit: cover;
 }
-.a13-info {
-  flex: 1;
-  margin-left: 16px;
-}
-.a13-tags {
-  font-size: 12px;
-  opacity: 0.8;
-}
-.a13-info h3 {
-  margin: 2px 0;
-  font-size: 16px;
-}
-.a13-info p {
-  margin: 0;
-  font-size: 13px;
-  opacity: 0.8;
-}
-.a13-controls {
-  margin-top: 8px;
-}
-.a13-controls button {
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
-  color: white;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  margin-right: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-  font-size: 14px;
-}
-.a13-controls button:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-.a13-progress {
-  position: relative;
-  height: 22px;
-  margin-top: 10px;
-  border-radius: 2px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.08);
-}
-#progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #89f7fe, #66a6ff);
-  width: 0%;
-  transition: width 0.2s linear;
-  border-radius: 2px;
-}
-.a13-wave-wrapper {
-  position: absolute;
-  display: flex;
-  align-items: flex-end;
-  bottom: 4px;
-  left: 0;
-  height: 18px;
-  width: 100%;
-  justify-content: center;
-  pointer-events: none;
-  opacity: 0.4;
-  transition: opacity 0.4s ease;
-}
-.a13-wave {
-  width: 3px;
-  height: 4px;
-  margin: 0 2px;
-  background: rgba(173, 216, 230, 0.8);
-  border-radius: 2px;
-  animation: waveAnim 1s ease-in-out infinite;
-}
-.a13-wave:nth-child(2) { animation-delay: 0.1s; }
-.a13-wave:nth-child(3) { animation-delay: 0.2s; }
-.a13-wave:nth-child(4) { animation-delay: 0.3s; }
-.a13-wave:nth-child(5) { animation-delay: 0.4s; }
 
-@keyframes waveAnim {
-  0%, 100% { height: 4px; opacity: 0.5; }
-  50% { height: 14px; opacity: 1; }
+.youtube-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  aspect-ratio: 16 / 9;
+  max-width: 640px;
+  margin: auto;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.a13-controls {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#a13-progress, .a13-wave-wrapper {
+  width: 100%;
+}
+
+.a13-wave {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #00bfff, #ff69b4);
+  animation: waveMove 2s linear infinite;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 </style>
 
-<!-- Load YouTube API safely -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-let player, isPlaying = false, progressUpdater;
-const playPauseBtn = document.getElementById('playPauseBtn');
-const progressBar = document.getElementById('progress-bar');
-const waveWrapper = document.getElementById('waveWrapper');
+<script is:inline>
+let player;
+let isPlaying = false;
+const playPauseBtn = document.getElementById("playPauseBtn");
+const waveWrapper = document.getElementById("waveWrapper");
 
-window.onYouTubeIframeAPIReady = () => {
-  player = new YT.Player('ytplayer', {
-    events: { onStateChange: onPlayerStateChange }
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player("youtube-player", {
+    events: {
+      onStateChange: onPlayerStateChange,
+    },
   });
-};
-
-playPauseBtn.addEventListener('click', () => {
-  if (!player) return;
-  if (!isPlaying) player.playVideo();
-  else player.pauseVideo();
-});
+}
 
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) {
     isPlaying = true;
-    playPauseBtn.textContent = '⏸️';
-    waveWrapper.style.opacity = '1';
-    startProgress();
-  } else {
+    playPauseBtn.textContent = "⏸️";
+    waveWrapper.style.opacity = "1";
+  } else if (
+    event.data === YT.PlayerState.PAUSED ||
+    event.data === YT.PlayerState.BUFFERING
+  ) {
     isPlaying = false;
-    playPauseBtn.textContent = '▶️';
-    waveWrapper.style.opacity = '0.4';
-    stopProgress();
+    playPauseBtn.textContent = "▶️";
+    waveWrapper.style.opacity = "0.4";
+  } else if (event.data === YT.PlayerState.ENDED) {
+    // Mencegah overlay "More videos"
+    player.seekTo(0);
+    player.pauseVideo();
+    isPlaying = false;
+    playPauseBtn.textContent = "▶️";
+    waveWrapper.style.opacity = "0.4";
   }
 }
 
-function startProgress() {
-  clearInterval(progressUpdater);
-  progressUpdater = setInterval(() => {
-    if (!player || !player.getDuration) return;
-    const current = player.getCurrentTime();
-    const duration = player.getDuration();
-    if (duration > 0) {
-      const progress = (current / duration) * 100;
-      progressBar.style.width = progress + '%';
-    }
-  }, 500);
-}
+playPauseBtn.addEventListener("click", () => {
+  if (!player) return;
+  if (isPlaying) {
+    player.pauseVideo();
+  } else {
+    player.playVideo();
+  }
+});
 
-function stopProgress() {
-  clearInterval(progressUpdater);
-}
+// Muat API YouTube secara dinamis
+const tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+document.body.appendChild(tag);
 </script>
