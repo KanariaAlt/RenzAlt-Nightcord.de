@@ -19,11 +19,13 @@
 /* Gambar utama */
 #osu-cursor > .cursor-inner > img {
 	width: 30px;
+	height: 30px;       /* tambahkan ini */
 	top: 0;
 	left: 0;
 	position: absolute;
 	display: block;
 	image-rendering: crisp-edges; /* lebih tajam untuk sprite osu */
+	background: rgba(255, 0, 255, 0.2); /* debug warna pink transparan */
 }
 
 /* Gambar additive (efek klik) */
