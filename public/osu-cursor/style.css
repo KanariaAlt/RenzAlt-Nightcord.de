@@ -1,0 +1,1 @@
+#osu-cursor{position:fixed;pointer-events:none;z-index:2147483647}#osu-cursor>.cursor-inner{position:relative;will-change:transform;transform-origin:left top}#osu-cursor>.cursor-inner>img{width:30px;top:0;left:0;position:absolute}#osu-cursor>.cursor-inner>img.cursor-additive{opacity:0}

@@ -109,6 +109,8 @@ const bannerOffset =
 			/>
 		))}
 
+		<link rel="stylesheet" href="/osu-cursor/main.css" />
+
 		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			// Load the theme from local storage
@@ -137,18 +139,18 @@ const bannerOffset =
 			offset = offset - offset % 4;
 			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
 		</script>
+
 		<style define:vars={{
 			configHue,
 			'page-width': `${PAGE_WIDTH}rem`,
-		}}></style>  <!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why -->
-
+		}}></style>
 
 		<slot name="head"></slot>
 
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
-
 	</head>
-	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
+
+	<body class="min-h-screen transition" class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
 		  data-overlayscrollbars-initialize
 	>
 		<ConfigCarrier></ConfigCarrier>
@@ -156,6 +158,34 @@ const bannerOffset =
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
+
+		<!-- 🔵 osu-cursor script -->
+		<script src="/osu-cursor/main.js" defer></script>
+		<script>
+		document.addEventListener("DOMContentLoaded", () => {
+		  if (typeof osuCursor !== "undefined") {
+			const cursor = new osuCursor({
+			  rotate: true,   // efek rotasi kursor
+			  trail: true,    // efek jejak (motion trail)
+			  scale: 1.0,     // ukuran
+			});
+
+			// Re-initialize after Swup page transitions
+			if (window?.swup?.hooks) {
+			  window.swup.hooks.on("page:view", () => {
+				cursor.stop();
+				cursor.init();
+			  });
+			} else {
+			  document.addEventListener("swup:enable", () => {
+				cursor.init();
+			  });
+			}
+		  } else {
+			console.error("osuCursor not loaded!");
+		  }
+		});
+		</script>
 	</body>
 </html>
 
