@@ -48,21 +48,47 @@ please follow these tips..
 
 ## Screenshots
 
-<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-  <img 
-    src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" 
-    width="330" 
-    height="620" 
-    style="border-radius: 10px; object-fit: cover;"
-    alt="Screenshot 1" 
-  />
-  <img 
-    src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" 
-    width="330" 
-    height="620" 
-    style="border-radius: 10px; object-fit: cover;"
-    alt="Screenshot 2" 
-  />
+<style>
+  .screenshots {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .screenshots img {
+    width: 330px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .screenshots img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Responsif di mobile */
+  @media (max-width: 768px) {
+    .screenshots {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .screenshots img {
+      width: 90%;
+      max-width: 400px;
+    }
+  }
+</style>
+
+<div class="screenshots">
+  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
+  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
 </div>
 
 ## Downloads
