@@ -33,10 +33,10 @@ It seems that AxionOS 2.1 is taking up too much system size so there is not enou
 please follow these tips..
 :::
 
-> **Prerequisites**
+**Prerequisites**
 - Unlocked Bootloader
 
-> **Flashing Instruction**
+**Flashing Instruction**
 - Wipe System, Vendor, Cache and Dalvik
 - Wipe Data (optional if from older build)
 - Install Rom
@@ -46,7 +46,7 @@ please follow these tips..
 - Flash LiteGapps "GMS Core, Playstore, GoogleServicesFramework, Common" addons via SukiSU manager
 - or if you want it easy, just repartition the system and flash as usual (optional)
 
-> ## Screenshots
+## Screenshots
 
 <style>
   .screenshots-section {
