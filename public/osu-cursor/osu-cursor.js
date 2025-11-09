@@ -1,15 +1,14 @@
 const anime = window.anime;
 
 export default class osuCursor {
-    constructor(options) {
+	constructor(options) {
 		this.options = options || {};
 		this.options.rotate ??= true;
-
 		this.init();
-    }
+	}
 
 	injectHtml(html, el) {
-		let div = document.createElement('div');
+		let div = document.createElement("div");
 		div.innerHTML = html;
 		while (div.children.length > 0) {
 			el.appendChild(div.children[0]);
@@ -19,46 +18,53 @@ export default class osuCursor {
 
 	init() {
 		this.dragState = 0;
-		/*
-	     -1 - native browser dragging
-		  0 - not dragging (default)
-		  1 - start dragging
-		  2 - dragging and rotating
-		  3 - pointer*/
 		this.visible = false;
-		this.dragStartPos = {x: 0, y: 0};
+		this.dragStartPos = { x: 0, y: 0 };
 		this.rotateState = {
 			isInAnimation: false,
-			degrees: 0
-		}
+			degrees: 0,
+		};
 		this.isTouch = false;
 
+		// ✅ Tambahkan CSS kuat agar cursor tidak ketutupan elemen lain
+		const globalCSS = document.createElement("style");
+		globalCSS.textContent = `
+      #osu-cursor {
+        position: fixed !important;
+        pointer-events: none !important;
+        z-index: 999999999 !important;
+        transform: translate(-50%, -50%) !important;
+      }
+    `;
+		document.head.appendChild(globalCSS);
 
 		// load CSS dari file public
-		const link = document.createElement('link');
-		link.rel = 'stylesheet';
-		link.href = '/osu-cursor/style.css';
-		link.onload = () => console.log('osu!cursor CSS loaded ✅');
-		link.onerror = () => console.error('❌ osu!cursor CSS failed to load');
-
+		const link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = "/osu-cursor/style.css";
+		link.onload = () => console.log("osu!cursor CSS loaded ✅");
+		link.onerror = () => console.error("❌ osu!cursor CSS failed to load");
 		document.head.appendChild(link);
 
 		if (document.querySelector("#osu-cursor")) {
-    		console.warn("osuCursor: element already exists, skipping init()");
-    		return;
+			console.warn("osuCursor: element already exists, skipping init()");
+			return;
 		}
 
-		this.cursor = this.injectHtml(`
+		this.cursor = this.injectHtml(
+			`
 		<div class='osu-cursor' id='osu-cursor'>
-  			<div class='cursor-inner'>
-    		<img class='cursor-fg' src='/osu-cursor/cursor.png'/>
-    		<img class='cursor-additive' src='/osu-cursor/cursor-additive.png'/>
-  			</div>
-		</div>`, document.body);
+			<div class='cursor-inner'>
+				<img class='cursor-fg' src='/osu-cursor/cursor.png'/>
+				<img class='cursor-additive' src='/osu-cursor/cursor-additive.png'/>
+			</div>
+		</div>`,
+			document.body
+		);
+
 		this.cursor.style.display = "none";
-		this.cursor.style.top = -500;
-		this.cursor.style.left = -500;
-		//document.documentElement.style.cursor = "none";
+		this.cursor.style.top = "-500px";
+		this.cursor.style.left = "-500px";
 
 		this.cursorInner = this.cursor.querySelector(".cursor-inner");
 		this.cursorFg = this.cursor.querySelector(".cursor-fg");
@@ -72,29 +78,30 @@ export default class osuCursor {
 		this.dragFunc = this.drag.bind(this);
 		this.dragEndFunc = this.dragEnd.bind(this);
 		this.touchFunc = this.touch.bind(this);
-		document.addEventListener('mousemove', this.mouseMoveFunc, { passive: true });
-		window.addEventListener('mousemove', this.mouseMoveFunc, { passive: true });
-		document.addEventListener('mouseover', this.mouseOverFunc, { passive: true });
-		document.addEventListener('mousedown', this.mouseDownFunc, { passive: true });
-		document.addEventListener('touchstart', this.touchFunc, { passive: true });
-		document.addEventListener('touchmove', this.touchFunc, { passive: true });
-		document.addEventListener('mouseup', this.mouseUpFunc, { passive: true });
-		document.addEventListener('mouseleave', this.mouseLeaveFunc, { passive: true });
-		document.addEventListener('drag', this.dragFunc, { passive: true });
-		document.addEventListener('dragend', this.dragEndFunc, { passive: true });
 
+		// ✅ Gunakan hanya window untuk event mousemove agar tidak tumpang tindih
+		window.addEventListener("mousemove", this.mouseMoveFunc, { passive: true });
+		document.addEventListener("mouseover", this.mouseOverFunc, { passive: true });
+		document.addEventListener("mousedown", this.mouseDownFunc, { passive: true });
+		document.addEventListener("touchstart", this.touchFunc, { passive: true });
+		document.addEventListener("touchmove", this.touchFunc, { passive: true });
+		document.addEventListener("mouseup", this.mouseUpFunc, { passive: true });
+		document.addEventListener("mouseleave", this.mouseLeaveFunc, { passive: true });
+		document.addEventListener("drag", this.dragFunc, { passive: true });
+		document.addEventListener("dragend", this.dragEndFunc, { passive: true });
+
+		// ✅ Debug test (hapus nanti)
 		setTimeout(() => {
-			this.cursor.style.top = '100px';
-			this.cursor.style.left = '100px';
-			this.cursor.style.display = 'block';
-			console.log('osu!cursor visible test ✅');
+			this.cursor.style.top = "200px";
+			this.cursor.style.left = "200px";
+			this.cursor.style.display = "block";
+			console.log("osu!cursor visible test ✅");
 		}, 500);
 	}
-		
+
 	getParentAttribute(element, attributeName) {
 		let value = element.getAttribute(attributeName);
-		if (value)
-			return value;
+		if (value) return value;
 		let parent = element.parentElement;
 		if (parent) {
 			return this.getParentAttribute(parent, attributeName);
@@ -104,52 +111,49 @@ export default class osuCursor {
 
 	getCurrentCursorStyle(target) {
 		let origCursor = this.getParentAttribute(target, "orig-cursor");
-		if (origCursor) {
-			return origCursor;
-		}
+		if (origCursor) return origCursor;
 		let cursorStyle = getComputedStyle(target).cursor;
 		return cursorStyle;
 	}
 
-    mouseMove(e) {
-		if (this.isTouch){
+	mouseMove(e) {
+		if (this.isTouch) {
 			this.isTouch = false;
 			return;
 		}
-		this.cursor.style.top = e.pageY - window.pageYOffset + "px";
-		this.cursor.style.left = e.pageX - window.pageXOffset + "px";
-		if ((this.dragState == 1 || this.dragState == 2) && this.options.rotate){
-			const deltaX = e.pageX - window.pageXOffset - this.dragStartPos.x;
-			const deltaY = e.pageY - window.pageYOffset - this.dragStartPos.y;
-			
-			if (deltaX * deltaX + deltaY * deltaY > 30 * 30){
-				this.dragState = 2;
-			}else{
-				return;
-			}
 
-			let degrees = Math.atan2(-deltaX, deltaY) * 180 / Math.PI + 24.3;
-			
+		// ✅ Hapus offset scroll agar posisi tepat
+		this.cursor.style.top = `${e.clientY}px`;
+		this.cursor.style.left = `${e.clientX}px`;
+
+		if ((this.dragState == 1 || this.dragState == 2) && this.options.rotate) {
+			const deltaX = e.clientX - this.dragStartPos.x;
+			const deltaY = e.clientY - this.dragStartPos.y;
+
+			if (deltaX * deltaX + deltaY * deltaY > 900) this.dragState = 2;
+			else return;
+
+			let degrees = Math.atan2(-deltaX, deltaY) * (180 / Math.PI) + 24.3;
+
 			let diff = (degrees - this.rotateState.degrees) % 360;
 			if (diff < -180) diff += 360;
 			if (diff > 180) diff -= 360;
 			this.rotateState.degrees += diff;
+
 			anime.remove(this.cursor);
-			this.cursor.style.transition = `transform 0.15s`;
+			this.cursor.style.transition = "transform 0.15s";
 			this.cursor.style.transform = `rotate(${this.rotateState.degrees}deg)`;
-		}		
-    }
+		}
+	}
 
 	mouseDown(e) {
-		if (this.isTouch){
+		if (this.isTouch) {
 			this.isTouch = false;
 			return;
 		}
-		if (this.visible){
-			//anime.remove(this.cursor);
-			//this.cursorAdditive.style.transitionDuration = "800ms";
-			this.dragStartPos.x = e.pageX - window.pageXOffset;
-			this.dragStartPos.y = e.pageY - window.pageYOffset;
+		if (this.visible) {
+			this.dragStartPos.x = e.clientX;
+			this.dragStartPos.y = e.clientY;
 			this.rotateState.degrees = 0;
 			this.cursor.classList.add("active");
 			anime.remove(this.cursorInner);
@@ -157,22 +161,22 @@ export default class osuCursor {
 				targets: this.cursorInner,
 				scale: 0.9,
 				duration: 800,
-				easing: function() { return function(t) { return (t - 1) * (t - 1) * (t - 1) + 1;} }
+				easing: () => (t) => (t - 1) ** 3 + 1,
 			});
 			anime.remove(this.cursorAdditive);
 			anime({
 				targets: this.cursorAdditive,
 				opacity: this.dragState == 3 ? 1 : [0, 1],
 				duration: 800,
-				easing: function() { return function(t) { return (t - 1) * (t - 1) * (t - 1) * (t - 1) * (t - 1) + 1;} }
+				easing: () => (t) => (t - 1) ** 5 + 1,
 			});
 			this.dragState = 1;
 		}
 	}
 
 	mouseUp(e) {
-		if (this.visible){
-			if (this.dragState == 2){
+		if (this.visible) {
+			if (this.dragState == 2) {
 				anime.remove(this.cursor);
 				this.rotateState.isInAnimation = true;
 				this.cursor.style.removeProperty("transition");
@@ -180,99 +184,70 @@ export default class osuCursor {
 					targets: this.cursor,
 					rotate: 0,
 					duration: 600 * (1 + Math.abs(this.rotateState.degrees / 720)),
-					easing: function() { return function(t) { return Math.pow(2, -10 * t) * Math.sin((0.5 * t - 0.075) * 20.943951023931955) + 1 - 0.0004882812499999998 * t; } },
+					easing: () => (t) =>
+						Math.pow(2, -10 * t) *
+							Math.sin((0.5 * t - 0.075) * 20.9439) +
+						1 -
+						0.00048828125 * t,
 					complete: () => {
-						this.rotateState.isInAnimation = false;new Event('click');
-					}
+						this.rotateState.isInAnimation = false;
+						new Event("click");
+					},
 				});
 				this.rotateState.degrees = 0;
-				//this.cursor.style.transform = `rotate(0deg)`;
 			}
 			this.dragState = 0;
-			//this.cursorAdditive.style.transitionDuration = "600ms";
 			this.cursor.classList.remove("active");
 			anime.remove(this.cursorInner);
 			anime({
 				targets: this.cursorInner,
 				scale: 1,
 				duration: 500,
-				easing: function() { return function(t) { return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * 20.943951023931955) + 1 - 0.00048828125 * t;} }
+				easing: () => (t) =>
+					Math.pow(2, -10 * t) *
+						Math.sin((t - 0.075) * 20.9439) +
+					1 -
+					0.00048828125 * t,
 			});
 			anime.remove(this.cursorAdditive);
 			anime({
 				targets: this.cursorAdditive,
 				opacity: [1, 0],
 				duration: 500,
-				easing: function() { return function(t) { return (t - 1) * (t - 1) * (t - 1) * (t - 1) * (t - 1) + 1;} }
+				easing: () => (t) => (t - 1) ** 5 + 1,
 			});
 		}
 	}
-	
-	mouseLeave(e) {
+
+	mouseLeave() {
 		this.visible = false;
-		document.documentElement.style.removeProperty("cursor");
 		this.cursor.style.display = "none";
 	}
 
 	mouseOver(e) {
-		if (this.dragState == 1 || this.dragState == 2){
-			return;
-		}
+		if (this.dragState == 1 || this.dragState == 2) return;
+
 		const currentCursor = this.getCurrentCursorStyle(e.target);
-		//console.log(currentCursor);
-		if (["default", "auto", "none"].includes(currentCursor)){
+
+		// ✅ Tambah “text” agar tetap muncul di area teks
+		if (["default", "auto", "none", "text"].includes(currentCursor)) {
 			this.visible = true;
-			document.documentElement.style.cursor = "none";
-			e.target.style.removeProperty("cursor");
 			this.cursor.style.display = "block";
-			if (this.dragState == 3){
-				this.dragState = 0;
-				anime.remove(this.cursor);
-				this.cursor.style.transition = `transform 0.15s`;
-				this.cursor.style.transform = "rotate(0)";
-				anime.remove(this.cursorAdditive);
-				anime({
-					targets: this.cursorAdditive,
-					opacity: 0,
-					duration: 200,
-					easing: function() { return function(t) { return (t - 1) * (t - 1) * (t - 1) * (t - 1) * (t - 1) + 1;} }
-				});
-			}
-		}else if (currentCursor == "pointer") {
-			this.visible = true;
 			document.documentElement.style.cursor = "none";
-			e.target.setAttribute("orig-cursor", currentCursor);
-			e.target.style.cursor = "none";
-			this.cursor.style.display = "block";
-			if (this.dragState == 0 && !this.rotateState.isInAnimation){
-				this.dragState = 3;
-				anime.remove(this.cursor);
-				this.cursor.style.transition = `transform 0.15s`;
-				this.cursor.style.transform = "rotate(24.3deg)";
-				anime.remove(this.cursorAdditive);
-				anime({
-					targets: this.cursorAdditive,
-					opacity: 1,
-					duration: 200,
-					easing: function() { return function(t) { return (t - 1) * (t - 1) * (t - 1) * (t - 1) * (t - 1) + 1;} }
-				});
-			}
-		}else{
+		} else {
 			this.visible = false;
-			document.documentElement.style.removeProperty("cursor");
 			this.cursor.style.display = "none";
+			document.documentElement.style.removeProperty("cursor");
 		}
 	}
 
-	drag(e) {
+	drag() {
 		this.visible = false;
-		document.documentElement.style.removeProperty("cursor");
 		this.cursor.style.display = "none";
 		this.dragState = -1;
 	}
 
-	dragEnd(e) {
-		document.documentElement.style.cursor = "none";
+	dragEnd() {
 		this.cursor.style.display = "block";
 		this.cursor.classList.remove("active");
 		anime.remove(this.cursorAdditive);
@@ -285,23 +260,23 @@ export default class osuCursor {
 		this.dragState = 0;
 	}
 
-	touch(e) {
+	touch() {
 		this.isTouch = true;
 	}
 
-    stop() {
-		document.removeEventListener('mousemove', this.mouseMoveFunc);
-		document.removeEventListener('mouseover', this.mouseOverFunc);
-		document.removeEventListener('mousedown', this.mouseDownFunc);
-		document.removeEventListener('touchstart', this.touchFunc);
-		document.removeEventListener('touchmove', this.touchFunc);
-		document.removeEventListener('mouseup', this.mouseUpFunc);
-		document.removeEventListener('mouseleave', this.mouseLeaveFunc);
-		document.removeEventListener('drag', this.dragFunc);
-		document.removeEventListener('dragend', this.dragEndFunc);
-		if (this.cursor){
+	stop() {
+		window.removeEventListener("mousemove", this.mouseMoveFunc);
+		document.removeEventListener("mouseover", this.mouseOverFunc);
+		document.removeEventListener("mousedown", this.mouseDownFunc);
+		document.removeEventListener("touchstart", this.touchFunc);
+		document.removeEventListener("touchmove", this.touchFunc);
+		document.removeEventListener("mouseup", this.mouseUpFunc);
+		document.removeEventListener("mouseleave", this.mouseLeaveFunc);
+		document.removeEventListener("drag", this.dragFunc);
+		document.removeEventListener("dragend", this.dragEndFunc);
+		if (this.cursor) {
 			this.cursor.remove();
 			this.cursor = null;
 		}
-    }
+	}
 }

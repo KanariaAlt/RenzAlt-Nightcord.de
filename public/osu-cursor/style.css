@@ -1,12 +1,11 @@
 #osu-cursor {
-	position: fixed;
-	pointer-events: none;
-	z-index: 2147483647;
-	top: 0;
-	left: 0;
-	transform: translate(-50%, -50%);
-	user-select: none;
-	/* transition: transform .2s ease; */
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 999999999 !important;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%) !important;
+  user-select: none;
 }
 
 /* Bagian dalam cursor */
