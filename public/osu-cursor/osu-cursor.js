@@ -72,15 +72,23 @@ export default class osuCursor {
 		this.dragFunc = this.drag.bind(this);
 		this.dragEndFunc = this.dragEnd.bind(this);
 		this.touchFunc = this.touch.bind(this);
-		document.addEventListener('mousemove', this.mouseMoveFunc, {passive: true});
-		document.addEventListener('mouseover', this.mouseOverFunc, {passive: true});
-		document.addEventListener('mousedown', this.mouseDownFunc, {passive: true});
-		document.addEventListener('touchstart', this.touchFunc, {passive: true});
-		document.addEventListener('touchmove', this.touchFunc, {passive: true});
-		document.addEventListener('mouseup', this.mouseUpFunc, {passive: true});
-		document.addEventListener('mouseleave', this.mouseLeaveFunc, {passive: true});
-		document.addEventListener('drag', this.dragFunc, {passive: true});
-		document.addEventListener('dragend', this.dragEndFunc, {passive: true});
+		document.addEventListener('mousemove', this.mouseMoveFunc, { passive: true });
+		window.addEventListener('mousemove', this.mouseMoveFunc, { passive: true });
+		document.addEventListener('mouseover', this.mouseOverFunc, { passive: true });
+		document.addEventListener('mousedown', this.mouseDownFunc, { passive: true });
+		document.addEventListener('touchstart', this.touchFunc, { passive: true });
+		document.addEventListener('touchmove', this.touchFunc, { passive: true });
+		document.addEventListener('mouseup', this.mouseUpFunc, { passive: true });
+		document.addEventListener('mouseleave', this.mouseLeaveFunc, { passive: true });
+		document.addEventListener('drag', this.dragFunc, { passive: true });
+		document.addEventListener('dragend', this.dragEndFunc, { passive: true });
+
+		setTimeout(() => {
+			this.cursor.style.top = '100px';
+			this.cursor.style.left = '100px';
+			this.cursor.style.display = 'block';
+			console.log('osu!cursor visible test ✅');
+		}, 500);
 	}
 		
 	getParentAttribute(element, attributeName) {
