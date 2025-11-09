@@ -49,8 +49,17 @@ please follow these tips..
 ## Screenshot
 
 <style>
+  /* Center heading Screenshot */
+  h2:has(+ .screenshots-section),
+  h3:has(+ .screenshots-section) {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px; /* jarak kecil biar dekat dengan gambar */
+    color: inherit; /* ikuti warna tema (dark/light) */
+  }
+
   .screenshots-section {
-    margin-top: 20px; /* sedikit lebih rapat dari sebelumnya */
+    margin-top: 20px;
     text-align: center;
   }
 
@@ -60,7 +69,7 @@ please follow these tips..
     align-items: flex-start;
     gap: 10px;
     flex-wrap: nowrap;
-    margin-top: 10px; /* <== ubah dari 30px jadi 10px */
+    margin-top: 10px; /* lebih rapat dengan judul */
   }
 
   .screenshots img {
@@ -73,7 +82,7 @@ please follow these tips..
     transform: translateY(25px);
   }
 
-  /* Efek muncul saat gambar terlihat di layar */
+  /* Efek muncul saat elemen terlihat */
   .visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
@@ -84,13 +93,12 @@ please follow these tips..
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   }
 
-  /* Responsif: tetap dua sejajar di layar kecil */
+  /* Responsif */
   @media (max-width: 768px) {
     .screenshots {
       gap: 8px;
       margin-top: 8px; /* juga dikurangi di mobile */
     }
-
     .screenshots img {
       width: 48%;
       max-width: none;
@@ -113,12 +121,12 @@ please follow these tips..
 </div>
 
 <script>
-  // Animasi hanya muncul saat elemen terlihat di layar
+  // Animasi fade-in saat elemen muncul di layar
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // biar animasi hanya sekali
+        observer.unobserve(entry.target); // hanya animasi sekali
       }
     });
   }, { threshold: 0.3 });
