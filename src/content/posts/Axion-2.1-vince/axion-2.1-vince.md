@@ -50,35 +50,33 @@ please follow these tips..
 
 <style>
   :root {
-    --accent: #f9a8d4; /* warna panah */
-    --bg-card: #2a2022; /* warna latar tombol */
-    --text-color: #e5e5e5;
+    --accent: #ff8ba7; /* warna aksen pink */
+    --bg-btn: #2b2023; /* warna tombol seperti custom rom */
+    --text-color: #f4e4e7; /* warna teks */
   }
 
-  /* Container keseluruhan */
+  /* Container utama */
   .screenshot-section {
-    max-width: 720px; /* lebar sama seperti gambar */
+    max-width: 720px;
     margin: 20px auto;
   }
 
   /* Tombol Material You */
   .screenshots-card {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
-    background-color: var(--bg-card);
-    border-radius: 14px;
+    gap: 8px;
+    background-color: var(--bg-btn);
+    border-radius: 16px;
     padding: 12px;
     width: 100%;
-    box-shadow: inset 0 1px 1px rgba(255,255,255,0.05),
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.04),
                 0 2px 4px rgba(0,0,0,0.25);
+    overflow: hidden;
+    cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .screenshots-card:hover {
-    background-color: rgba(249, 168, 212, 0.08);
-    transform: scale(1.01);
   }
 
   .screenshots-card span {
@@ -92,7 +90,6 @@ please follow these tips..
   .screenshots-card .arrow {
     color: var(--accent);
     font-size: 1rem;
-    margin-left: 2px;
     transition: transform 0.2s ease;
   }
 
@@ -100,7 +97,27 @@ please follow these tips..
     transform: translateX(3px);
   }
 
-  /* Container screenshot */
+  /* Ripple effect */
+  .screenshots-card::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: rgba(255, 139, 167, 0.25);
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.8s ease;
+  }
+
+  .screenshots-card:active::after {
+    transform: scale(4);
+    opacity: 1;
+    transition: 0s;
+  }
+
+  /* Grid Screenshot */
   .screenshots {
     display: flex;
     justify-content: space-between;
