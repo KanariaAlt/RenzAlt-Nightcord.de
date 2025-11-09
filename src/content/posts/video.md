@@ -33,11 +33,29 @@ draft: false
       </div>
       <h3>ふわり feat. MIMI, 初音ミク</h3>
       <p>MIMI</p>
+      <!-- SVG Control Buttons -->
       <div class="a13-controls">
-        <button id="prevBtn">⏮️</button>
-        <button id="playPauseBtn">▶️</button>
-        <button id="nextBtn">⏭️</button>
+        <button id="prevBtn" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+            stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 19 2 12 11 5 11 19"></polygon>
+            <polygon points="22 19 13 12 22 5 22 19"></polygon>
+          </svg>
+        </button>
+        <button id="playPauseBtn" aria-label="Play/Pause">
+          <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
+        <button id="nextBtn" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+            stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 19 22 12 13 5 13 19"></polygon>
+            <polygon points="2 19 11 12 2 5 2 19"></polygon>
+          </svg>
+        </button>
       </div>
+      <!-- Progress & Wave -->
       <div class="a13-progress">
         <div class="a13-wave-wrapper" id="waveWrapper">
           <div class="a13-wave"></div>
@@ -60,9 +78,7 @@ draft: false
   margin-top: 24px;
   color: white;
   font-family: "Inter", sans-serif;
-  /* hapus height fix */
   min-height: 130px;
-  height: auto; /* biarkan tinggi menyesuaikan isi */
 }
 
 .a13-bg {
@@ -77,9 +93,8 @@ draft: false
 .a13-content {
   position: relative;
   display: flex;
-  flex-wrap: wrap; /* biar gak pecah di layar kecil */
+  flex-wrap: wrap;
   align-items: center;
-  height: 100%;
   padding: 12px 20px 16px;
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.4);
@@ -115,8 +130,11 @@ draft: false
   opacity: 0.8;
 }
 
+/* Controls */
 .a13-controls {
   margin-top: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .a13-controls button {
@@ -124,21 +142,31 @@ draft: false
   border: none;
   color: white;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   margin-right: 8px;
   cursor: pointer;
-  transition: background 0.3s;
-  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .a13-controls button:hover {
   background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
 }
 
+.a13-controls svg {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+/* Progress & Wave */
 .a13-progress {
   position: relative;
-  height: 24px; /* tambah sedikit agar gelombang muat */
+  height: 24px;
   margin-top: 10px;
   border-radius: 2px;
   overflow: hidden;
@@ -202,13 +230,14 @@ draft: false
 }
 </style>
 
-<!-- Load YouTube API safely -->
+<!-- YouTube API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 let player, isPlaying = false, progressUpdater;
 const playPauseBtn = document.getElementById('playPauseBtn');
 const progressBar = document.getElementById('progress-bar');
 const waveWrapper = document.getElementById('waveWrapper');
+const playIcon = document.getElementById('playIcon');
 window.onYouTubeIframeAPIReady = () => {
   player = new YT.Player('ytplayer', {
     events: { onStateChange: onPlayerStateChange }
@@ -222,12 +251,12 @@ playPauseBtn.addEventListener('click', () => {
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) {
     isPlaying = true;
-    playPauseBtn.textContent = '⏸️';
+    playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
     waveWrapper.style.opacity = '1';
     startProgress();
   } else {
     isPlaying = false;
-    playPauseBtn.textContent = '▶️';
+    playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
     waveWrapper.style.opacity = '0.4';
     stopProgress();
   }
