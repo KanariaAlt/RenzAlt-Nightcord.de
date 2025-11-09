@@ -1,7 +1,4 @@
-import cursorDefault from '../assets/cursor.png';
-import cursorAdditive from '../assets/cursor-additive.png';
-import styleSheet from './style.css';
-import anime from './anime.min.js';
+const anime = window.anime;
 
 export default class osuCursor {
     constructor(options) {
@@ -37,19 +34,24 @@ export default class osuCursor {
 		this.isTouch = false;
 
 
-		const style = document.createElement('style');
-		style.textContent = styleSheet;
-		document.body.appendChild(style);
+		// load CSS dari file public
+		const link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.href = '/osu-cursor/style.css';
 
-		if (document.querySelector("#osu-cursor")){
-			return;
+		document.head.appendChild(link);
+
+		if (document.querySelector("#osu-cursor")) {
+    		console.warn("osuCursor: element already exists, skipping init()");
+    		return;
 		}
+
 		this.cursor = this.injectHtml(`
 		<div class='osu-cursor' id='osu-cursor'>
-			<div class='cursor-inner'>
-			<img class='cursor-fg' src='${cursorDefault}'/>
-			<img class='cursor-additive' src='${cursorAdditive}'/>
-			</div>
+  			<div class='cursor-inner'>
+    		<img class='cursor-fg' src='/osu-cursor/cursor.png'/>
+    		<img class='cursor-additive' src='/osu-cursor/cursor-additive.png'/>
+  			</div>
 		</div>`, document.body);
 		this.cursor.style.display = "none";
 		this.cursor.style.top = -500;
