@@ -49,52 +49,101 @@ please follow these tips..
 ## Screenshots
 
 <style>
+  .screenshots-section {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .screenshots-section h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
   .screenshots {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: nowrap;
-    margin-top: 30px;
+    max-width: 100%;
+    padding: 0 10px;
   }
 
   .screenshots img {
-    width: 330px;
+    width: 48%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Saat elemen terlihat di layar */
+  .visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .screenshots img:nth-child(1).visible {
+    transition-delay: 0.2s;
+  }
+
+  .screenshots img:nth-child(2).visible {
+    transition-delay: 0.4s;
   }
 
   .screenshots img:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   }
 
-  /* Responsif - tetap dua kolom di semua ukuran layar */
+  /* Responsif: tetap dua kolom di semua layar */
   @media (max-width: 768px) {
     .screenshots {
-      gap: 8px;
+      gap: 10px;
     }
-
     .screenshots img {
-      width: 48%; /* dua sejajar proporsional */
-      max-width: none;
-      height: auto;
+      width: 48%;
+      border-radius: 10px;
     }
   }
 
   @media (max-width: 480px) {
+    .screenshots {
+      gap: 8px;
+    }
     .screenshots img {
-      width: 48%; /* tetap dua kolom, tapi otomatis mengecil */
+      width: 48%;
     }
   }
 </style>
 
-<div class="screenshots">
-  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
-  <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
+<div class="screenshots-section">
+  <h2 class="fade-in-element">Screenshots</h2>
+  <div class="screenshots">
+    <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-36.jpg" alt="Screenshot 1">
+    <img class="fade-in-element" src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/photo_2025-11-03_08-11-45.jpg" alt="Screenshot 2">
+  </div>
 </div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+</script>
 
 ## Downloads
 
