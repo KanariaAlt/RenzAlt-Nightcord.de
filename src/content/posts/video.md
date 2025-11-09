@@ -25,7 +25,7 @@ draft: false
   <div class="a13-bg"></div>
   <div class="a13-content">
     <div class="a13-cover">
-      <img src="https://raw.githubusercontent.com/KanariaAlt/Nightcord-at-25-Playlist/refs/heads/WIP/src/data/covers/deco.jpg" alt="cover">
+      <img src="https://raw.githubusercontent.com/KanariaAlt/screenshots-renz-nigo-web/refs/heads/main/mimi.jpg" alt="cover">
     </div>
     <div class="a13-info">
       <div class="a13-tags">
