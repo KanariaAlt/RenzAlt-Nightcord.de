@@ -1,7 +1,7 @@
 import cursorDefault from '../assets/cursor.png';
 import cursorAdditive from '../assets/cursor-additive.png';
 import styleSheet from './style.css';
-import anime from 'animejs';
+import anime from './anime.min.js';
 
 export default class osuCursor {
     constructor(options) {

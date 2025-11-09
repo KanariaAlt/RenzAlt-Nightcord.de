@@ -163,10 +163,32 @@ const bannerOffset =
 		<!-- menjaga tinggi halaman selama transisi Swup -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 
-		<!-- osu-lazer cursor -->
-		<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-		<script src="/osu-cursor/main.js" type="module"></script>
-		<script type="module">var cursor = new osuCursor();</script>
+		<!-- osu!lazer cursor -->
+<script type="module">
+  import "/osu-cursor/anime.min.js";
+  import osuCursor from "/osu-cursor/osu-cursor.js";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cursor = new osuCursor({
+      rotate: true,
+      trail: true,
+    });
+    console.log("osu!cursor initialized ✅");
+
+    // Hilangkan cursor bawaan
+    const style = document.createElement("style");
+    style.textContent = `html, body, * { cursor: none !important; }`;
+    document.head.appendChild(style);
+
+    // re-init saat Swup pindah halaman
+    if (window?.swup?.hooks) {
+      window.swup.hooks.on("page:view", () => {
+        cursor.stop?.();
+        cursor.init?.();
+      });
+    }
+  });
+</script>
 	</body>
 </html>
 
