@@ -12,7 +12,7 @@ draft: false
 <iframe
   id="ytplayer"
   width="100%"
-  height="468"
+  height="420"
   src="https://www.youtube.com/embed/5gIf0_xpFPI?enablejsapi=1&rel=0&modestbranding=1"
   title="YouTube video player"
   frameborder="0"
@@ -20,8 +20,8 @@ draft: false
   allowfullscreen>
 </iframe>
 
-<!-- Android 13 Style Music Card -->
-<div class="a13-music-card">
+<!-- Compact Android 13 Music Card -->
+<div class="a13-music-card hidden">
   <div class="a13-bg"></div>
   <div class="a13-content">
     <div class="a13-cover">
@@ -59,22 +59,31 @@ draft: false
 </div>
 
 <style>
+/* === Base Card === */
 .a13-music-card {
   position: relative;
   overflow: hidden;
-  border-radius: 16px;
-  margin-top: 16px; /* sedikit dikurangi agar lebih dekat ke iframe */
+  border-radius: 14px;
+  margin-top: 14px;
   color: white;
   font-family: "Inter", sans-serif;
-  min-height: 170px;
+  min-height: 140px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.a13-music-card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .a13-bg {
   position: absolute;
   inset: 0;
   background: url("https://i.ytimg.com/vi/5gIf0_xpFPI/hqdefault.jpg") center/cover;
-  filter: blur(30px) brightness(0.6);
-  transform: scale(1.2);
+  filter: blur(25px) brightness(0.6);
+  transform: scale(1.1);
   z-index: 0;
 }
 
@@ -82,55 +91,58 @@ draft: false
   position: relative;
   display: flex;
   align-items: center;
-  padding: 16px 22px;
+  padding: 12px 18px;
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.45);
   z-index: 1;
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
-/* Cover lebih besar */
+/* === Cover === */
 .a13-cover img {
-  width: 140px;
-  height: 140px;
-  border-radius: 16px;
+  width: 95px;
+  height: 95px;
+  border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .a13-cover img:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
+/* === Info === */
 .a13-info {
   flex: 1;
-  margin-left: 16px; /* jarak diperkecil agar lebih rapat */
+  margin-left: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .a13-tags {
-  font-size: 13px;
-  opacity: 0.85;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 .a13-info h3 {
-  margin: 4px 0;
-  font-size: 18px;
-  line-height: 1.3;
+  margin: 3px 0;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 600;
 }
 
 .a13-info p {
   margin: 0;
-  font-size: 14px;
-  opacity: 0.85;
+  font-size: 13px;
+  opacity: 0.75;
 }
 
-/* Controls */
+/* === Controls === */
 .a13-controls {
-  margin-top: 10px; /* lebih rapat */
+  margin-top: 8px;
   display: flex;
   align-items: center;
 }
@@ -140,9 +152,9 @@ draft: false
   border: none;
   color: white;
   border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  margin-right: 6px;
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
   cursor: pointer;
   transition: all 0.25s ease;
   display: flex;
@@ -156,22 +168,22 @@ draft: false
 }
 
 .a13-controls svg {
-  width: 19px;
-  height: 19px;
+  width: 16px;
+  height: 16px;
   pointer-events: none;
 }
 
-/* Responsive */
+/* === Responsive === */
 @media (max-width: 768px) {
   .a13-content {
     flex-direction: column;
     align-items: flex-start;
-    padding: 14px;
+    padding: 12px;
   }
   .a13-cover img {
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: 10px;
   }
   .a13-info {
     margin-left: 0;
@@ -204,4 +216,15 @@ function onPlayerStateChange(event) {
     playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
   }
 }
+/* === Intersection Observer untuk animasi muncul === */
+const card = document.querySelector('.a13-music-card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      card.classList.add('show');
+      observer.unobserve(card);
+    }
+  });
+}, { threshold: 0.2 });
+observer.observe(card);
 </script>
