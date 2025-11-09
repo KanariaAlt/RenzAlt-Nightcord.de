@@ -33,7 +33,6 @@ draft: false
       </div>
       <h3>ふわり feat. MIMI, 初音ミク</h3>
       <p>MIMI</p>
-      <!-- SVG Control Buttons -->
       <div class="a13-controls">
         <button id="prevBtn" aria-label="Previous">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
@@ -67,7 +66,7 @@ draft: false
   margin-top: 24px;
   color: white;
   font-family: "Inter", sans-serif;
-  min-height: 130px;
+  min-height: 150px;
 }
 
 .a13-bg {
@@ -82,35 +81,38 @@ draft: false
 .a13-content {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  padding: 12px 20px 16px;
+  padding: 16px 24px;
   backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
+  border-radius: 16px;
 }
 
 .a13-cover img {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
   object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 .a13-info {
   flex: 1;
-  margin-left: 16px;
-  min-width: 200px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .a13-tags {
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.8;
 }
 
 .a13-info h3 {
-  margin: 2px 0;
-  font-size: 16px;
+  margin: 3px 0;
+  font-size: 17px;
 }
 
 .a13-info p {
@@ -121,7 +123,7 @@ draft: false
 
 /* Controls */
 .a13-controls {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   align-items: center;
 }
@@ -157,6 +159,12 @@ draft: false
   .a13-content {
     flex-direction: column;
     align-items: flex-start;
+    padding: 14px;
+  }
+  .a13-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
   }
   .a13-info {
     margin-left: 0;
@@ -165,7 +173,6 @@ draft: false
 }
 </style>
 
-<!-- YouTube API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 let player, isPlaying = false;
