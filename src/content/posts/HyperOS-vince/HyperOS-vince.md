@@ -2,7 +2,7 @@
 title: HyperExperience-Vince-Tiramisu
 published: 2025-11-02
 description: Android 13.
-image: ./HyperOS.jpg
+image: ./HyperOS.jpeg
 tags: [Tiramisu, Vince, Alt]
 category: Custom ROM
 draft: false
