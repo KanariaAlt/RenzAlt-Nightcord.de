@@ -1,5 +1,5 @@
 ---
-title: Music BetterNCM card from RenzAlt BetterNCM Material
+title: (WIP) RenzAlt BetterNCM Music card
 published: 2025-08-01
 description: Test From my react.
 tags: [Music]
