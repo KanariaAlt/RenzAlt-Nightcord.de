@@ -179,4 +179,4 @@ please follow these tips..
 > ### Downloads
 > - [SukiSU_3.1.9_13307-release.apk](https://t.me/MI8953/16/5640)
 > - [20251024-kernel-vince-defconfig.img](https://t.me/RenzAlt_Archive/17)
-> - [https://afterlifeos.com/device/vince/](https://afterlifeos.com/device/vince/)
+> - Rom Link : [Afterlife](https://afterlifeos.com/device/vince/)
