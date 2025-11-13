@@ -10,7 +10,7 @@ draft: false
 <style>
   .ncm-card {
     background-color: #f3f4fa;
-    border-radius: 26px;
+    border-radius: 60px;
     width: 100%;
     margin: 28px 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
@@ -26,8 +26,8 @@ draft: false
     height: 200px;
     object-fit: cover;
     display: block;
-    border-top-left-radius: 26px;
-    border-top-right-radius: 26px;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
   }
 
   .ncm-content {
