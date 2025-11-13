@@ -36,7 +36,7 @@ please follow these tips..
 - Wipe Data (optional if from older build)
 - Install Rom
 - Flash Gapps
-- flash my personal kernelSU "20251024-kernel-vince-defconfig.img" (optional)
+- flash my personal kernelSU "20251024-kernel-vince-defconfig.img"
 - Reboot
 - install SukiSU manager apk to support KernelSU
 
