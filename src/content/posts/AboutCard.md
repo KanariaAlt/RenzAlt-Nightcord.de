@@ -17,7 +17,6 @@ draft: false
   overflow: hidden;
   border: 4px solid #5a6dbf;
 ">
-
   <!-- Header Image -->
   <div style="
     width: 100%;
@@ -25,22 +24,18 @@ draft: false
     overflow: hidden;
     border-bottom: 3px solid #dbe1ff;
   ">
-    <img src="/posts/aboutcard/dark.jpg" alt="Header" style="width: 100%; height: 100%; object-fit: cover;">
+    <img src="https://raw.githubusercontent.com/AmiaAlt-Miscellaneous/renzalt-nightcordde-common/refs/heads/main/uwu_banner.png" alt="Header" style="width: 100%; height: 100%; object-fit: cover;">
   </div>
-
   <!-- Content -->
   <div style="display: flex; align-items: center; padding: 12px 16px; background-color: #f8faff;">
-
     <!-- Avatar -->
-    <img src="https://i.imgur.com/2K8u7pI.png" alt="Avatar"
+    <img src="https://raw.githubusercontent.com/AmiaAlt-Miscellaneous/renzalt-nightcordde-common/refs/heads/main/avatar.jpg" alt="Avatar"
       style="width: 50px; height: 50px; border-radius: 50%; border: 3px solid #dce1ff; margin-right: 12px;">
-
     <!-- Text -->
     <div style="flex: 1;">
       <div style="font-size: 18px; font-weight: 600; color: #20263f;">Hai, sayang</div>
       <div style="font-size: 14px; color: #606a8d;">Met Malem...</div>
     </div>
-
     <!-- Heart Icon -->
     <div style="
       background-color: #e0e7ff;
@@ -54,6 +49,5 @@ draft: false
     ">
       <span style="color: #304ffe; font-size: 18px;">&#10084;</span>
     </div>
-
   </div>
 </div>
