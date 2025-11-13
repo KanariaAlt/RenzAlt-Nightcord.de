@@ -12,57 +12,53 @@ draft: false
     background-color: #f3f4fa;
     border-radius: 15px;
     width: 100%;
-    margin: 28px 0;
+    margin: 20px 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     font-family: 'Inter', sans-serif;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   .ncm-banner {
-    width: 92%;
-    height: 200px;
+    width: 100%;
+    height: 180px;
     object-fit: cover;
     display: block;
-    border-top-left-radius: 26px;
-    border-top-right-radius: 26px;
   }
 
   .ncm-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 22px 20px 22px;
     background-color: #f3f4fa;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: -20px; /* avatar naik sedikit */
+    padding: 8px 16px 12px 16px;
+    margin-top: -36px; /* avatar menumpuk sedikit di atas banner */
   }
 
   .ncm-left {
     display: flex;
     align-items: center;
+    gap: 10px;
   }
 
   .ncm-avatar {
-    width: 48px;
-    height: 48px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
-    margin-right: 12px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.08);
+    border: 3px solid #f3f4fa;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
 
   .ncm-name {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #111827;
-    line-height: 1.2;
+    line-height: 1.1;
   }
 
   .ncm-msg {
-    font-size: 14px;
+    font-size: 13px;
     color: #4b5563;
     margin-top: 2px;
   }
@@ -70,17 +66,18 @@ draft: false
   .ncm-heart {
     background-color: #e0e7ff;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: inset 0 0 2px rgba(0,0,0,0.05);
+    flex-shrink: 0;
   }
 
   .ncm-heart span {
     color: #334155;
-    font-size: 18px;
+    font-size: 16px;
   }
 </style>
 
@@ -97,4 +94,5 @@ draft: false
     <div class="ncm-heart"><span>❤</span></div>
   </div>
 </div>
+
 
