@@ -26,8 +26,7 @@ draft: false
     height: 200px;
     object-fit: cover;
     display: block;
-    border-top-left-radius: 60px;
-    border-top-right-radius: 60px;
+    border-radius: 60px;
   }
 
   .ncm-content {
