@@ -10,7 +10,7 @@ draft: false
 <style>
   .ncm-card {
     background-color: #f3f4fa;
-    border-radius: 26px;
+    border-radius: 11px;
     width: 100%;
     margin: 28px 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
