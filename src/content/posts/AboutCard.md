@@ -16,6 +16,9 @@ draft: false
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     font-family: 'Inter', sans-serif;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .ncm-banner {
@@ -25,6 +28,7 @@ draft: false
     display: block;
     border-top-left-radius: 26px;
     border-top-right-radius: 26px;
+    margin: 0 auto; /* <-- pusatkan banner */
   }
 
   .ncm-content {
@@ -33,7 +37,9 @@ draft: false
     justify-content: space-between;
     padding: 12px 22px 20px 22px;
     background-color: #f3f4fa;
-    margin-top: -20px; /* avatar sedikit naik ke arah banner */
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: -20px; /* avatar naik sedikit */
   }
 
   .ncm-left {
