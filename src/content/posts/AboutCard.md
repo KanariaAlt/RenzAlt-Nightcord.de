@@ -22,7 +22,7 @@ draft: false
   }
 
   .ncm-banner {
-    width: 95%;
+    width: 92%;
     height: 200px;
     object-fit: cover;
     display: block;
