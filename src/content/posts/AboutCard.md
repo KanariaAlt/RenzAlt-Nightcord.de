@@ -8,96 +8,83 @@ draft: false
 ---
 
 <style>
-  .about-card {
-    background-color: #ffffff;
-    border-radius: 22px;
-    width: 340px;
-    margin: 24px auto;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  .ncm-card {
+    background-color: #f3f4fa;
+    border-radius: 26px;
+    width: 460px;
+    margin: 30px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     font-family: 'Inter', sans-serif;
     overflow: hidden;
-    border: 1px solid #e5e7eb;
-    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
-  .about-card img.banner {
+
+  .ncm-banner {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
+    display: block;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
   }
-  .about-card .content {
+
+  .ncm-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 18px;
-    background-color: #f9fafb;
-    transition: background-color 0.3s;
+    background-color: #f3f4fa;
   }
-  .about-card .left {
+
+  .ncm-left {
     display: flex;
     align-items: center;
   }
-  .about-card .avatar {
-    width: 46px;
-    height: 46px;
+
+  .ncm-avatar {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 12px;
   }
-  .about-card .name {
-    font-size: 17px;
-    font-weight: 600;
+
+  .ncm-name {
+    font-size: 18px;
+    font-weight: 700;
     color: #111827;
   }
-  .about-card .msg {
+
+  .ncm-msg {
     font-size: 14px;
-    color: #6b7280;
+    color: #4b5563;
   }
-  .about-card .heart {
-    background-color: #e5e7eb;
+
+  .ncm-heart {
+    background-color: #e0e7ff;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.05);
   }
-  .about-card .heart span {
-    color: #1f2937;
-    font-size: 17px;
-  }
-  /* 🌙 Dark Mode */
-  @media (prefers-color-scheme: dark) {
-    .about-card {
-      background-color: #1f1f1f;
-      border-color: #2f2f2f;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
-    .about-card .content {
-      background-color: #262626;
-    }
-    .about-card .name {
-      color: #f3f4f6;
-    }
-    .about-card .msg {
-      color: #a1a1aa;
-    }
-    .about-card .heart {
-      background-color: #333;
-    }
-    .about-card .heart span {
-      color: #f87171;
-    }
+
+  .ncm-heart span {
+    color: #334155;
+    font-size: 20px;
   }
 </style>
-<div class="about-card">
-  <img class="banner" src="https://raw.githubusercontent.com/AmiaAlt-Miscellaneous/renzalt-nightcordde-common/refs/heads/main/uwu_banner.png" alt="Header">
-  <div class="content">
-    <div class="left">
-      <img class="avatar" src="https://raw.githubusercontent.com/AmiaAlt-Miscellaneous/renzalt-nightcordde-common/refs/heads/main/avatar.jpg" alt="Avatar">
+
+<div class="ncm-card">
+  <img class="ncm-banner" src="https://raw.githubusercontent.com/AmiaAlt-Miscellaneous/renzalt-nightcordde-common/refs/heads/main/uwu_banner.png" alt="Banner">
+  <div class="ncm-content">
+    <div class="ncm-left">
+      <img class="ncm-avatar" src="https://raw.githubusercontent.com/AmiaAlt-Miscellaneous/renzalt-nightcordde-common/refs/heads/main/avatar.jpg" alt="Avatar">
       <div>
-        <div class="name">Hai, sayang</div>
-        <div class="msg">Met Malem...</div>
+        <div class="ncm-name">Hai, sayang</div>
+        <div class="ncm-msg">Met Malem...</div>
       </div>
     </div>
-    <div class="heart"><span>&#10084;</span></div>
+    <div class="ncm-heart"><span>❤</span></div>
   </div>
 </div>
