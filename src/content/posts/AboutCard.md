@@ -11,8 +11,8 @@ draft: false
   .ncm-card {
     background-color: #f3f4fa;
     border-radius: 26px;
-    width: 460px;
-    margin: 30px auto;
+    width: 100%;
+    margin: 28px 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     font-family: 'Inter', sans-serif;
     overflow: hidden;
@@ -20,19 +20,20 @@ draft: false
 
   .ncm-banner {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     display: block;
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
   }
 
   .ncm-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 18px;
+    padding: 12px 22px 20px 22px;
     background-color: #f3f4fa;
+    margin-top: -20px; /* avatar sedikit naik ke arah banner */
   }
 
   .ncm-left {
@@ -41,28 +42,31 @@ draft: false
   }
 
   .ncm-avatar {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     margin-right: 12px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.08);
   }
 
   .ncm-name {
     font-size: 18px;
     font-weight: 700;
     color: #111827;
+    line-height: 1.2;
   }
 
   .ncm-msg {
     font-size: 14px;
     color: #4b5563;
+    margin-top: 2px;
   }
 
   .ncm-heart {
     background-color: #e0e7ff;
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,7 +75,7 @@ draft: false
 
   .ncm-heart span {
     color: #334155;
-    font-size: 20px;
+    font-size: 18px;
   }
 </style>
 
