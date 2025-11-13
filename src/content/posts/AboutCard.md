@@ -22,13 +22,12 @@ draft: false
   }
 
   .ncm-banner {
-    width: 90%;
+    width: 95%;
     height: 200px;
     object-fit: cover;
     display: block;
     border-top-left-radius: 26px;
     border-top-right-radius: 26px;
-    margin: 0 auto; /* <-- pusatkan banner */
   }
 
   .ncm-content {
