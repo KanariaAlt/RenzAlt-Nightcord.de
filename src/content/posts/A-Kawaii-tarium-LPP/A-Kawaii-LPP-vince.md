@@ -53,26 +53,26 @@ LPP is the name of the MSM8953 noda which means "low power processing". Basicall
 so what do I do? I compare the power differences used by each cpu and its pmic and apply this low power one through rigorous trials and tests based on the scheme so it is safe and this is the result also the function details based on the scheme :
 
 ```
- ----------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------
                                   Vince-LPP LDO
- ----------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------
  PMIC Data     |           Voltage           |                Interface
- ----------------------------------------------------------------------------------------
- lab_reg       |      5.700V -> 5.500V       |        Panel/MDSS/DSI
- ibb_reg       |      5.700V -> 5.500V       |        Panel/MDSS/DSI
- pm8953_s3     |      1.225V -> 0.984v       |        Panel/CSID/MDSS/DSI
- pm8953_s4     |      2.050V -> 1.896v       |        PMIC-Audio (pmic-analog-codec)
- pm8953_l2     |      1.225V -> 0.975v       |        Camera (Qualcomm EEPROM)
- pm8953_l10    |      2.850V -> 2.800v       |        Sensor/Touchscreen/LED_Awinic
- pm8953_l19    |      1.380V -> 1.200V       |        WiFi/BT WCNSS (Qualcomm WCNSS)
- pm8953_l22    |      2.850V -> 2.800V       |        Camera (Qualcomm EEPROM)
- pm8953_l23    |      1.200V -> 0.975V       |        Camera (Qualcomm EEPROM & CSID)
+ -----------------------------------------------------------------------------------
+ lab_reg       |      5.700V -> 5.500V       |   Panel/MDSS/DSI
+ ibb_reg       |      5.700V -> 5.500V       |   Panel/MDSS/DSI
+ pm8953_s3     |      1.225V -> 0.984v       |   Panel/CSID/MDSS/DSI
+ pm8953_s4     |      2.050V -> 1.896v       |   PMIC-Audio (pmic-analog-codec)
+ pm8953_l2     |      1.225V -> 0.975v       |   Camera (Qualcomm EEPROM)
+ pm8953_l10    |      2.850V -> 2.800v       |   Sensor/Touchscreen/LED_Awinic
+ pm8953_l19    |      1.380V -> 1.200V       |   WiFi/BT WCNSS (Qualcomm WCNSS)
+ pm8953_l22    |      2.850V -> 2.800V       |   Camera (Qualcomm EEPROM)
+ pm8953_l23    |      1.200V -> 0.975V       |   Camera (Qualcomm EEPROM & CSID)
 ```
 
 ```
- ----------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------
                                    interface
- ----------------------------------------------------------------------------------------
+ -----------------------------------------------------------------------------------
 lab_reg = LDO Analog Bias
 ibb_reg = Inverting Buck-Boost
 CSID = Camera Serial Interface Decoder
