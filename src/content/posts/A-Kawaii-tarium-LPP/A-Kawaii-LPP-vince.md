@@ -52,7 +52,7 @@ LPP is the name of the MSM8953 noda which means "low power processing". Basicall
 
 so what do I do? I compare the power differences used by each cpu and its pmic and apply this low power one through rigorous trials and tests based on the scheme so it is safe and this is the result also the function details based on the scheme :
 
-```
+```csharp
  -----------------------------------------------------------------------------------
                                   Vince-LPP LDO
  -----------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ so what do I do? I compare the power differences used by each cpu and its pmic a
  pm8953_l23    |      1.200V -> 0.975V       |   Camera (Qualcomm EEPROM & CSID)
 ```
 
-```
+```csharp
  -----------------------------------------------------------------------------------
                                    interface
  -----------------------------------------------------------------------------------
