@@ -25,10 +25,6 @@ Author : @Rlightz7iF
     <li>Hotspot & Camera not working</li>
 </ul>
 
-:::tip
-please follow these tips..
-:::
-
 **Prerequisites**
 - Unlocked Bootloader
 
