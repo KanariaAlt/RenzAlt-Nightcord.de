@@ -36,7 +36,6 @@ Author : @Rlightz7iF
 - Format Data
 - Reboot System
 - install SukiSU manager apk to support KernelSU
-- If you need help. Contact Telegram User@XiaoLiuCN
 
 **Important Notes**
 - If Wi-Fi fails to connect, go to settings and set the MAC address to "use device MAC".
